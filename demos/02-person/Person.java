@@ -22,6 +22,7 @@ public class Person {
         char type = 'A';
         String name = "Pepe";
 
+
         System.out.println("Edad " + age);
         System.out.println("Fecha " + birthYear);
         System.out.println("Población de mi ciudad " +  cityPopulation);
