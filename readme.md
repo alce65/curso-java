@@ -54,8 +54,11 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 
 ### Dia 4 (J 05/06)
 
+- repaso tipos de datos
+- printf
 - Profundizar clases y objetos
 - Crear una clase e instanciar objetos
-- Eleemntod estáticos de una clase
-- printf
+- (Elementos estáticos de una clase)
+
+
 - Operadores
