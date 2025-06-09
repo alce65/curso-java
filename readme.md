@@ -58,7 +58,24 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 - printf
 - Profundizar clases y objetos
 - Crear una clase e instanciar objetos
-- (Elementos estáticos de una clase)
+- Ejercicio: la clase Car
 
+### Dia 5 (L 09/06)
+
+- Review:
+  - Instalación y configuración del entorno 
+  - datos y variables
+  - tipos primitivos
+  - clases y objetos
+  - entrada / salida para el usuario
+- Elementos estáticos de una clase
+  - ejemplo clase Car
+  - class Calc: cálculos básicos
+- Conceptos de funciones:
+  - definición
+  - parámetros y argumentos
+  - retorno y efectos secundarios
+  - invocación
+  - ámbito de las variables
 
 - Operadores

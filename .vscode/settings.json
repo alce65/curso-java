@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
         "Gorko"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }

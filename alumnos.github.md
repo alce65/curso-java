@@ -1,6 +1,6 @@
 
-1. Diego
-2. Oswaldo
+1. Diego [dvasco22] (https://github.com/dvasco22)
+2. Oswaldo [generacion2024](https://github.com/generacion2024)
 3. Stefanía: [stefaniaburi](https://github.com/stefaniaburi)
 
 4. Guillermo [elsomg](https://github.com/elsomg)
@@ -12,7 +12,7 @@
 9. Eugenio [elmsmoc](https://github.com/elmsmoc)
 
 10. Kyle [kylewenad](https://github.com/kylewenad)
-11. ---
+11. Laura [laura888rg](https://github.com/laura888rg)
 12. Claudia [claauugil](https://github.com/claauugil)
 
 13. Fernando [fernando2108](https://github.com/fernando2108)
@@ -21,7 +21,7 @@
 
 16. Cristian Jonathan [cj-mtz14](https://github.com/cj-mtz14)
 17. ---
-18. Soraya
+18. ---
 
 
 
