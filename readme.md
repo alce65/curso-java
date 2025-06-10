@@ -78,4 +78,30 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
   - invocación
   - ámbito de las variables
 
+### Dia 6 (M 10/06)
+
+- Review: Funciones
+  - Ejercicio: Areas
+  - Sobrecarga de funciones
+- Args en la función main
+  - argumentos dese CLI
+  - conversión de String a enteros
+  - uso de métodos públicos de otras clases
 - Operadores
+  - Asignación
+  - Aritméticos
+  - De comparación
+- Condiciones: IF
+  - Ejercicio: números pares/impares
+    - if
+    - if defensivo: precondiciones
+    - valores previos (else por defecto)
+  - Ejercicio: saludo según la edad
+    - elseif
+
+### Dia 7 (X 11/06)
+
+- Solución ejercicio: saludo según la edad
+- Switch / case
+- Operadores lógicos (AND - OR - XOR)
+
