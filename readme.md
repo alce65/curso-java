@@ -96,12 +96,19 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
     - if
     - if defensivo: precondiciones
     - valores previos (else por defecto)
+    - operador ternario
   - Ejercicio: saludo según la edad
     - elseif
 
 ### Dia 7 (X 11/06)
 
 - Solución ejercicio: saludo según la edad
+- Ejercicio: School
+  - else if ()
+  - Arrays
+  - Ternarios
 - Switch / case
-- Operadores lógicos (AND - OR - XOR)
-
+  - Ejemplo: semana
+  - Ejercicio: traducir semana
+- Operadores lógicos (AND - OR)
+- Ejercicio: Tienda
