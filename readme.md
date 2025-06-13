@@ -112,3 +112,25 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
   - Ejercicio: traducir semana
 - Operadores lógicos (AND - OR)
 - Ejercicio: Tienda
+
+### Día 8 (J 12/06)
+
+- Ejercicio Tienda - solución
+- Ejercicio tienda ampliado - solución
+
+  - Constantes
+  - Condiciones
+  - Valores por defecto iniciales
+  - Cálculo de valores
+  - Salida con formato usando template strings
+  - Reutilización de código
+
+- Números random
+  - Math.random()
+  - Random
+
+- Ejercicio: Adivinar número
+
+### Día 9 (V 13/06)
+
+- Iteraciones: bucles
