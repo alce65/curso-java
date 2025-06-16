@@ -134,3 +134,15 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 ### Día 9 (V 13/06)
 
 - Iteraciones: bucles
+  - Contadores (for...)
+  - Centinelas (while...)
+
+- Iteraciones con contador
+  - for
+  - for each
+- Uso con arrays
+- Bucle infinito -> condición de salida
+
+- Ejemplo: tablas de multiplicar
+- Ejemplo: número primo
+- Ejemplo: lista de números primos
