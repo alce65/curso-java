@@ -93,21 +93,21 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
   - De comparación
 - Condiciones: IF
   - Ejercicio: números pares/impares
-    - if
-    - if defensivo: precondiciones
+    - `if`
+    - `if` defensivo: precondiciones
     - valores previos (else por defecto)
     - operador ternario
   - Ejercicio: saludo según la edad
-    - elseif
+    - `else if`
 
 ### Dia 7 (X 11/06)
 
 - Solución ejercicio: saludo según la edad
 - Ejercicio: School
-  - else if ()
+  - `else if` ()
   - Arrays
   - Ternarios
-- Switch / case
+- `switch` / `case`
   - Ejemplo: semana
   - Ejercicio: traducir semana
 - Operadores lógicos (AND - OR)
@@ -126,23 +126,48 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
   - Reutilización de código
 
 - Números random
-  - Math.random()
-  - Random
+  - `Math.random()`
+  - `Random`
 
 - Ejercicio: Adivinar número
 
 ### Día 9 (V 13/06)
 
 - Iteraciones: bucles
-  - Contadores (for...)
-  - Centinelas (while...)
+  - Contadores (`for`...)
+  - Centinelas (`while`...)
 
 - Iteraciones con contador
-  - for
-  - for each
+  - `for`
+  - `for each`
 - Uso con arrays
 - Bucle infinito -> condición de salida
 
 - Ejemplo: tablas de multiplicar
 - Ejemplo: número primo
 - Ejemplo: lista de números primos
+
+### Día 10 (L 16/06)
+
+- Solución del ejercicio números primos
+
+- Iteraciones con centinela (`while`)
+  - condición en el bucle
+  - salida mediante `break`
+  - `continue`
+
+- Ejemplo: manejo de Strings
+- Ejemplo: palíndromo
+- Otros ejercicios propuestos
+
+### Día 11 (M 17/06)
+
+- Iteraciones `do - while`. Diferencia con `while`
+
+- Uso de iteraciones al pedir datos al usuario
+
+- Arrays: vectores[] y  matrices[][]
+  - Creación
+  - Recorrido: for / for each
+
+- Ejercicio: Pedirle palabras al usuario
