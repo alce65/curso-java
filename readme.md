@@ -171,3 +171,7 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
   - Recorrido: for / for each
 
 - Ejercicio: Pedirle palabras al usuario
+
+### Día 12 (X 18/06)
+
+- Ejercicios
