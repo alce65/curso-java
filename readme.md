@@ -174,4 +174,15 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 
 ### Día 12 (X 18/06)
 
-- Ejercicios
+- Ejercicios:
+
+- Fibonacci
+- Piedra, papel o tijera
+- Estadísticos -> Varargs
+- Factorial
+
+### Día 13 (J 19/06)
+
+- Factorial (recursivo)
+- 
+
