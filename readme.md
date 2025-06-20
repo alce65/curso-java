@@ -184,5 +184,32 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 ### Día 13 (J 19/06)
 
 - Factorial (recursivo)
-- 
 
+- VSC: Proyectos y packages 
+- OOP
+- Concepto
+  - Abstracción
+  - Encapsulación
+  - Herencia
+  - Polimorfismo
+- Abstracción: clases y objetos
+  - Ejemplo: clase Person
+  - Propiedades y métodos
+  - Propiedades estáticas
+  - Constructores
+  - Miembros estáticos
+- Encapsulación
+  - Ámbitos
+    - Private
+    - Protected (default)
+    - Public
+  - Ámbitos y packages
+  - Ejercicio: clase Character
+
+### Día 14 (V 20/06)
+
+- Ejercicio: clase Character
+  - Añadir Enum
+  - Añadir métodos de instancia
+  - Añadir static: id
+- Herencia
