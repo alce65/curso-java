@@ -8,18 +8,18 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 
 ### Día 1 (L 02/06)
 
-- Configurar VNCServer (SB0900) / *VNCViewer*
+- Configurar VNCServer (SB0900) / _VNCViewer_
 - ¿Que es Java? - Lenguajes compilados / interpretados -> mixto
-- JVM -> JRE (usuario) || *JDK* (desarrollador) 
+- JVM -> JRE (usuario) || _JDK_ (desarrollador)
 - Posibles herramientas: IDE v. Editor de Código
-- Instalar *VSC* + *Extensiones* (Plugin) JAVA
+- Instalar _VSC_ + _Extensiones_ (Plugin) JAVA
 - Otras extensiones: theme, icons
 - Ejemplo de Hola Mundo
-- Instalar y configurar *git*
+- Instalar y configurar _git_
 
 ### Día 2 (M 03/06)
 
-- Instalar y configurar *git* (continuación)
+- Instalar y configurar _git_ (continuación)
 - Conceptos
   - Estado delos archivos: U - M - A (S) - C
   - Areas: WorkArea - Stage - Repositorio
@@ -27,7 +27,7 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
   - Creación del repositorio: git init
   - git add y git commit
   - git status y git log
-- GitHub: hosting de repositorios 
+- GitHub: hosting de repositorios
   - Conexión con GitHub: git remote add
   - git push y git pull
   - git clone
@@ -63,7 +63,7 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 ### Dia 5 (L 09/06)
 
 - Review:
-  - Instalación y configuración del entorno 
+  - Instalación y configuración del entorno
   - datos y variables
   - tipos primitivos
   - clases y objetos
@@ -126,6 +126,7 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
   - Reutilización de código
 
 - Números random
+
   - `Math.random()`
   - `Random`
 
@@ -134,6 +135,7 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 ### Día 9 (V 13/06)
 
 - Iteraciones: bucles
+
   - Contadores (`for`...)
   - Centinelas (`while`...)
 
@@ -152,6 +154,7 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 - Solución del ejercicio números primos
 
 - Iteraciones con centinela (`while`)
+
   - condición en el bucle
   - salida mediante `break`
   - `continue`
@@ -166,7 +169,8 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 
 - Uso de iteraciones al pedir datos al usuario
 
-- Arrays: vectores[] y  matrices[][]
+- Arrays: vectores[] y matrices[][]
+
   - Creación
   - Recorrido: for / for each
 
@@ -185,7 +189,7 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 
 - Factorial (recursivo)
 
-- VSC: Proyectos y packages 
+- VSC: Proyectos y packages
 - OOP
 - Concepto
   - Abstracción
@@ -212,4 +216,12 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
   - Añadir Enum
   - Añadir métodos de instancia
   - Añadir static: id
+- Ejercicio: Factura (Invoice)
+
+### Día 15 (L 23/06)
+
+- Ejercicio: Factura (Invoice) - solución
+
+  - `chcp 65001` to switch the command prompt encoding to UTF-8
+
 - Herencia
