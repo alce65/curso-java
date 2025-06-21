@@ -1,6 +1,38 @@
 package accounting;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Item {
+
+    static private final NumberFormat NF = NumberFormat.getCurrencyInstance(Locale.GERMANY);
+
+
     Product product;
     int amount;
+    int value;
+
+    public Item(Product product, int amount) {
+        this.product = product;
+        this.amount = amount;
+        this.value = calculatePrice(amount);
+    }
+
+    private int calculatePrice(int items) {
+        return items * product.getUnityPrice();
+    }
+
+    String renderInvoiceLine() {
+
+        String start = "%-25s :   %s u. a %s".formatted(
+            product.getSku() + " " + product.getName(), amount, 
+                NF.format(product.getUnityPrice()));
+
+        String message = """
+                %-50s..... Total %s
+                """.formatted(
+                start, 
+                NF.format(value));
+        return message;
+    }
 }

@@ -5,7 +5,7 @@ public class Company {
     private String nif;
     private String name;
 
-    Company(String nif, String name) {
+    public Company(String nif, String name) {
         this.nif = nif;
         this.name = name;
     }

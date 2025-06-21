@@ -5,23 +5,26 @@ public class Product {
     private String sku;
     private String name;
     private int unityPrice;
+   
+   
+    public String getSku() {
+        return sku;
+    }
 
-    Product(String sku, String name, int unitaryPrice) {
+    public String getName() {
+        return name;
+    }
+
+    public int getUnityPrice() {
+        return unityPrice;
+    }
+
+    public Product(String sku, String name, int unitaryPrice) {
         this.sku = sku;
         this.name = name;
         this.unityPrice = unitaryPrice;
     }
 
-    private int calculatePrice(int items) {
-        return items * unityPrice;
-    }
 
-    String renderInvoiceLine(int amount) {
-        int value = calculatePrice(amount);
-        String message = """
-                %s: %s unidades a %sEU ..... Total %s
-                """.formatted(name, amount, unityPrice, value);
-        return message;
-    }
 
 }
