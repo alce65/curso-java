@@ -1,4 +1,7 @@
+import base.Dog;
 import base.Person;
+import base.Pet;
+import base.Square;
 import game.Character;
 import game.Role;
 import game.Species;
@@ -38,10 +41,37 @@ public class App {
         Character.showList();
     }
 
+    public static void playPets() {
+
+        Dog pet1 = new Dog("Rufus", 2);
+        System.out.println(pet1 instanceof Dog);
+        System.out.println(pet1 instanceof Pet);
+        System.out.println(pet1 instanceof Object);
+
+        pet1.sleep();
+        pet1.eat();
+
+    }
+
     public static void main(String[] args) {
 
         // playWithPersons();
-        prepareGame();
+        // prepareGame();
+        // playPets();
+
+        Square sq = new Square(10);
+        String type = "Cuadrado";
+        System.out.println(sq instanceof Object);
+        System.out.println(type instanceof Object);
+        System.out.println(type); 
+        System.out.println(sq);
+
+        Square sq2 = new Square(10);
+        System.out.println(sq == sq2);
+
+        System.out.println(sq2);
+
+        System.out.println(sq.equals(sq2));
 
     }
 }
