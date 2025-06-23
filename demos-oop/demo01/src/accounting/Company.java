@@ -9,13 +9,22 @@ public class Company {
         this.nif = nif;
         this.name = name;
     }
-
-    String getNif() {
-        return this.nif.toUpperCase();
+      
+    public String renderHeader() {
+        return """
+                ==============================================
+                %s
+                %s
+                ----------------------------------------------
+                """.formatted(name, nif);
     }
 
-    String getName() {
-        return name;
+    public String renderClient() {
+        return """
+                Datos cliente
+                Nombre: %s
+                Nif: %s
+                """.formatted(name, nif);
     }
     
 }

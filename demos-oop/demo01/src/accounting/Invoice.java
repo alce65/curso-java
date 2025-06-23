@@ -13,37 +13,34 @@ public class Invoice {
     static private final NumberFormat NF = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
     // propiedades y métodos static
-    static private Company brand = new Company("68323392y", "Boracay");
+    static private final Company BRAND = new Company("68323392y", "Boracay");
     static private byte lastId = 0;
 
-    static private String getID() {
+    static private String generateID() {
         int year = LocalDate.now().getYear();
         String id = String.valueOf(year) + '/' + ++lastId;
         return id;
     }
 
-    // declaración de propiedades preferiblemente privadas
+    // declaración de propiedades privadas
 
-    private String id = Invoice.getID();
+    private String id;
     private Company client;
     private List<Item> items = new ArrayList<>();
     private double iva;
     private double total = 0;
     private Payments paymentMethod;
 
-    public Company getClient() {
-        return client;
-    }
-
     // constructor
     public Invoice(Company client, Product product, int amount, double iva, Payments method) {
-        this.id = Invoice.getID();
+        this.id = Invoice.generateID();
         this.client = client;
-        this.items.add(new Item(product, amount));
-        this.total = this.items.get(0).value; // Initialize total with the first item's value
+        // this.items.add(new Item(product, amount));
+        // this.total = this.items.get(0).value; // Initialize total with the first item's value
         this.client = client;
         this.iva = iva;
         this.paymentMethod = method;
+        addItem(product, amount);
     }
 
     public Invoice(Company client, Product product, int amount, Payments method) {
@@ -51,35 +48,17 @@ public class Invoice {
     }
 
     public Invoice(Company client, Product product, int amount) {
-        this(client, product, amount, 1.21, Payments.Transfer);
+        this(client, product, amount, 1.21, Payments.TRANSFER);
     }
-
 
     public void addItem(Product product, int amount) {
         Item item = new Item(product, amount);
         this.items.add(item);
-        this.total += item.value; // Update total with the new item's value
+        this.total += item.getValue(); // Update total with the new item's value
     }
 
     public double calculatePrice() {
         return total * this.iva;
-    }
-
-    private String renderHeader() {
-        return """
-                ==============================================
-                %s
-                %s
-                ----------------------------------------------
-                """.formatted(brand.getName(), brand.getNif());
-    }
-
-    private String renderClient() {
-        return """
-                Datos cliente
-                Nombre: %s
-                Nif: %s
-                """.formatted(client.getName(), client.getNif());
     }
 
     private String renderDate() {
@@ -138,7 +117,13 @@ public class Invoice {
                 Gracias por su compra
                 ----------------------------------------------
 
-                """.formatted(renderHeader(), renderClient(), id, renderDate(), renderItems(), renderPayment());
+                """.formatted(
+                    BRAND.renderHeader(), 
+                    client.renderClient(), 
+                    id, 
+                    renderDate(), 
+                    renderItems(), 
+                    renderPayment());
 
         System.out.println(invoice);
     }

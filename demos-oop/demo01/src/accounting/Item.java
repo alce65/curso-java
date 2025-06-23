@@ -7,10 +7,13 @@ public class Item {
 
     static private final NumberFormat NF = NumberFormat.getCurrencyInstance(Locale.GERMANY);
 
+    private Product product;
+    private int amount;
+    private int value;
 
-    Product product;
-    int amount;
-    int value;
+    public int getValue() {
+        return value;
+    }
 
     public Item(Product product, int amount) {
         this.product = product;
