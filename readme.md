@@ -222,6 +222,23 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 
 - Ejercicio: Factura (Invoice) - solución
 
+  - Análisis semántico -> modelado 
+  - Relaciones de dependencia (composición)
+  - Crear class y enums
+  - Repartir responsabilidades
+
   - `chcp 65001` to switch the command prompt encoding to UTF-8
 
 - Herencia
+
+  - class extends
+  - constructor: super()
+  - override methods: super.method()
+  - visibilidad: public, protected, private
+  - Ejemplo Pet -> Dog, Cat
+  - instanceof
+  - Object: toString
+
+### Día 16 (M 24/06)
+
+- Equality
