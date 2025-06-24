@@ -64,7 +64,7 @@ public class App {
         System.out.println(sq instanceof Object);
         System.out.println(type instanceof Object);
         System.out.println(type); 
-        System.out.println(sq);
+        System.out.println(sq.toString());
 
         Square sq2 = new Square(10);
         System.out.println(sq == sq2);
