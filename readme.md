@@ -241,4 +241,36 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 
 ### Día 16 (M 24/06)
 
-- Equality
+- Equality y tipos de datos
+  - Primitivos
+  - Wrapper objects
+  - Strings
+  - Objetos; clases propias
+  - Arrays y listas
+  - Valores y referencias
+- Comparación
+  - Operador ==
+  - método equals
+  - Override de equals
+- Otros métodos y su override
+  - Método toString
+- Casting o coercion
+- Paso de parámetros a funciones
+  - Argumentos de tipo referencia
+  - Clonado de objetos
+  - Clonado de Arrays y listas
+
+### Día 17 (X 25/06)
+
+- Review
+- Clonado de objetos
+- Clonado y otros métodos de arrays
+
+- Polimorfismo (& herencia)
+  - Overload
+  - Override
+- Clases abstractas
+- Interfaces
+  - Ejemplo de segregación de interfaces
+
+
