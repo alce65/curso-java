@@ -273,4 +273,6 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 - Interfaces
   - Ejemplo de segregación de interfaces
 
+### Día 18 (J 26/06)
 
+- Ejercicio: supermercado
