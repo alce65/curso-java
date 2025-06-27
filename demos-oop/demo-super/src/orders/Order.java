@@ -1,5 +1,6 @@
 package orders;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import containers.IContainer;
@@ -9,11 +10,10 @@ public class Order implements IOrder {
 
     private String reference;
     private Set<IContainer> containers;
-    private  Set<IProduct> products;
-
 
     public Order(String reference) {
         this.reference = reference;
+        this.containers = new HashSet<>();
     }
 
     @Override
@@ -27,10 +27,13 @@ public class Order implements IOrder {
     }
 
     @Override
-    public Set<IProduct> getProducts() {
+    public Set<IProduct> getCalculatedProducts() {
+        Set<IProduct> products = new HashSet<>();
+        for (IContainer container : containers) {
+            products.addAll(container.getProducts());
+        }
         return products;
     }
-
 
     @Override
     public void addContainer(IContainer container) {
@@ -40,11 +43,23 @@ public class Order implements IOrder {
 
     @Override
     public IContainer addProduct(IProduct product) {
-        products.add(product);
         // TODO Añadir al container
         return null;
     }
 
-   
+    @Override
+    public String toString() {
+         String message = """
+                 Pedido: %s
+                 Hash: %s
+                 """.formatted(reference,
+                 super.toString()
+                 );  
+                 
+        for (IContainer container : containers) {
+            message += container;
+        }
 
+        return message;
+    }
 }

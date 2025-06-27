@@ -10,10 +10,10 @@ public interface IOrder {
 
     String getReference();
 	Set<IContainer> getContainers();
-	Set<IProduct> getProducts();
 	
     // Lógica de negocio
-
+    
+    Set<IProduct> getCalculatedProducts();
     void addContainer(IContainer container);
 	IContainer addProduct(IProduct product);
 

@@ -4,7 +4,7 @@ public enum ContainerType {
 
     // BAG, BOX
 
-    BAG("bolsa"), BOX("caja");
+    BAG("Bolsa"), BOX("Caja");
 
     String name;
     

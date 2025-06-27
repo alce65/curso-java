@@ -275,4 +275,32 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 
 ### Día 18 (J 26/06)
 
-- Ejercicio: supermercado
+- Ejercicio: supermercado (1)
+
+- Análisis y diseño.
+- UML
+- Interfaces
+- Estructura de datos: Set
+- Clases principales
+  - Supermarket (main)
+  - Order
+  - Container
+  - Product
+- Enums
+
+### Día 19 (V 27/06)
+
+- Ejercicio: supermercado (2)
+
+- Review
+- Jerarquía de Clases
+  - Container (Abstract) -> Box / Bag
+- Instancia de objetos
+  - Override de toString  
+- Jerarquía de Clases
+  - Product (Abstract)
+    - Food
+    - Hygiene
+    - Drugstore
+    - Pet
+- Lógica del embolsado
