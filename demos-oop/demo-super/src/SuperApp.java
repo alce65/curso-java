@@ -26,10 +26,10 @@ public class SuperApp {
         System.out.println(order1);
 
 
-        IProduct p1 = new Food("Patatas", 1000, 1000);
+        IProduct p1 = new Food("Patatas", 1500, 1000);
         IProduct p2 = new Drugstore("Detergente", 1000, 1000);
-        IProduct p3 = new Hygiene("Papel", 1000, 100);
-        IProduct p4 = new Pet("Comida para perros", 1000, 1000);
+        IProduct p3 = new Hygiene("Papel Higiénico", 1000, 100);
+        IProduct p4 = new Pet("Comida para perros", 1000, 2000);
 
         System.out.println(p1);
         System.out.println(p2);

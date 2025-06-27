@@ -37,13 +37,17 @@ public class Order implements IOrder {
 
     @Override
     public void addContainer(IContainer container) {
-        containers.add(container);
-        
+        containers.add(container); 
     }
 
     @Override
     public IContainer addProduct(IProduct product) {
         // TODO Añadir al container
+
+        for (IContainer container : containers) {
+            if (container.canInsert(product))
+            return container;
+        }
         return null;
     }
 

@@ -13,8 +13,8 @@ public interface IOrder {
 	
     // Lógica de negocio
     
-    Set<IProduct> getCalculatedProducts();
     void addContainer(IContainer container);
+    Set<IProduct> getCalculatedProducts();
 	IContainer addProduct(IProduct product);
 
 }
