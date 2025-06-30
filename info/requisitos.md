@@ -10,7 +10,9 @@ Los productos del supermercado se dividen en varias categorías: Alimentación, 
 
 Cada producto tendrá un volumen y un peso determinado, que tendremos que considerar “ocupado” cuando lo embolsemos.
 
-Los productos de alimentación no pueden ser mezclados con los de las otras categorías. Los productos de higiene no se pueden mezclar ni con los de alimentación, y los de droguería, ni con los de alimentación ni con los de mascotas.
+- Los productos de alimentación no pueden ser mezclados con los de las otras categorías. 
+- Los productos de higiene no se pueden mezclar con los de alimentación,
+- los de droguería, ni con los de alimentación ni con los de mascotas.
 
 En la primera versión de esta aplicación no es necesario optimizar la distribución, ni tener en cuenta temperaturas ni caducidades.
 

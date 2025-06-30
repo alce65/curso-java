@@ -124,17 +124,6 @@ Programa de formación del [SEPE](https://sede.sepe.gob.es/especialidadesformati
   - 6.3.1. Break
   - 6.3.2. Continue
 
-## 7. CONTROL Y MANEJO DE EXCEPCIONES
-
-- 7.1. Excepciones de Java
-- 7.2. Jerarquías de excepciones en Java
-- 7.3. Manejo de excepciones en Java
-  - 7.3.1. Captura de excepciones
-  - 7.3.2. Delegación de excepciones
-  - 7.3.3. Definición de excepciones de usuario
-  - 7.3.4. Lanzamiento de excepciones de usuario y redefinición
-- 7.4. Aserciones
-
 ## 8. UTILIZACIÓN AVANZADA DE CLASES
 
 - 8.1. Relaciones entre clases. Composición de clases
@@ -151,6 +140,19 @@ Programa de formación del [SEPE](https://sede.sepe.gob.es/especialidadesformati
 - 8.9. Interfaces. Clases abstractas vs. Interfaces en Java
   - 8.9.1. Jerarquía de interfaces
 - 8.10. Clases y tipos genéricos o parametrizados
+
+## =======================================================
+
+## 7. CONTROL Y MANEJO DE EXCEPCIONES
+
+- 7.1. Excepciones de Java
+- 7.2. Jerarquías de excepciones en Java
+- 7.3. Manejo de excepciones en Java
+  - 7.3.1. Captura de excepciones
+  - 7.3.2. Delegación de excepciones
+  - 7.3.3. Definición de excepciones de usuario
+  - 7.3.4. Lanzamiento de excepciones de usuario y redefinición
+- 7.4. Aserciones
 
 ## 9. APLICACIÓN DE LAS ESTRUCTURAS DE ALMACENAMIENTO
 
