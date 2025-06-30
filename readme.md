@@ -4,6 +4,8 @@ Place: Centro de Formación Digital San Blas
 Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas/curso/curso-programacion-en-java/
 ---
 
+Acción formativa: 25/1599 (23/1583)
+
 ## Calendario 📅
 
 ### Día 1 (L 02/06)
@@ -38,7 +40,7 @@ Empresa: CAS - https://cursoscastraining.es/centro-de-formacion-digital-san-blas
 - Java: Hola Mundo
 
 - Estructura de un programa
-- public class / metodo main
+- public class / método main
 - println()
 
 - Tipos de datos primitivos
