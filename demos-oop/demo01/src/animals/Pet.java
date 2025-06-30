@@ -34,6 +34,11 @@ public abstract class Pet implements IPet {
 
     @Override
     public abstract String makeSounds();
+
+    @Override
+    public String toString() {
+        return "Pet [name=" + name + ", age=" + age + "]";
+    }
 }
 
 

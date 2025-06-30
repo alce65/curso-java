@@ -1,5 +1,3 @@
-
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
@@ -43,7 +41,8 @@ public class ArraysDemo {
         //showArray(data3);
 
         int[] numbers2 = {1, 2, 34, 5, 89};
-        List temp2 = Arrays.asList(numbers);
+        @SuppressWarnings("rawtypes")
+        List temp2 = Arrays.asList(numbers2);
         System.out.println("Temp list " + temp2);
 
 
