@@ -34,23 +34,42 @@ public abstract class Container implements IContainer {
 
     @Override
     public boolean canInsert(IProduct product) {
-        // TODO Auto-generated method stub
-        return false;
+
+        // Es resistente
+        if(!this.isResistantTo(product)){
+            return false;
+        }
+        
+        // Tiene espacio
+        if (!product.hasSpace(this)) {
+            return false;
+        }
+
+        // Los productos son compatibles
+
+        for (IProduct element : products) {
+            if(!product.isCompatible(element)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     
     @Override
     public boolean isResistantTo(IProduct product) {
-        // TODO Auto-generated method stub
-        // resistance 
-        return false;
+        return true;
     }
 
     @Override
-    public int volumeDisposable() {
+    public int volumeAvailable() {
 
-        // TODO Auto-generated method stub
-        return 0;
+        int totalVolume =  calculateVolume() ;
+        int usedVolume = 0;
+        for (IProduct product : products) {
+            usedVolume += product.getVolume();
+        }
+        return totalVolume - usedVolume;
     }
 
 

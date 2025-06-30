@@ -30,20 +30,13 @@ public abstract class Product implements IProduct {
     }
 
     @Override
-    public boolean hasSpace(IContainer container) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    public boolean isCompatible(IProduct p) {
-        // TODO Auto-generated method stub
-        return false;
+    public boolean hasSpace(IContainer container) {        
+        return volume <= container.volumeAvailable();
     }
 
     @Override
     public void putInto(IContainer container) {
-        // TODO Auto-generated method stub
+        container.getProducts().add(this);
     }
 
     @Override

@@ -20,7 +20,7 @@ public interface IContainer {
 	int calculateVolume();
     
     // Lógica de negocio
-	int volumeDisposable();
+	int volumeAvailable();
 
 	boolean canInsert(IProduct product);
 	boolean isResistantTo(IProduct product);

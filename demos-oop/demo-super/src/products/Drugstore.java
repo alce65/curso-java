@@ -13,4 +13,11 @@ public class Drugstore extends Product{
         return Category.DRUGSTORE;
     }
 
+    @Override
+    public boolean isCompatible(IProduct product) {
+        return product.getCategory() == Category.DRUGSTORE || product.getCategory() == Category.HYGIENE;
+    }
+
+
+
 }

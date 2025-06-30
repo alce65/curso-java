@@ -32,13 +32,9 @@ public class Bag extends Container {
     }
 
 
-
     @Override
     public boolean isResistantTo(IProduct product) {
-        return false;
+        return resistance >= product.getWeight();
     }
     
-
-
-
 }
