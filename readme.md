@@ -306,3 +306,51 @@ Acción formativa: 25/1599 (23/1583)
     - Drugstore
     - Pet
 - Lógica del embolsado
+
+## Día 20 (L 30/06)
+
+- Ejercicio: supermercado (3)
+
+- Lógica del embolsado (continuación)
+
+- Proyectos Maven
+- Javadoc
+
+- Errores y excepciones en Java
+  - Errores
+  - Tipos de excepciones en Java
+    - Runtime exceptions: IndexOutOfBoundsException, NullPointerException,
+    - Checked exceptions
+- Aparición de excepciones en Java
+    - Creación de excepciones en el sistema
+    - Tratamiento de excepciones
+      - Throws
+      - Throw
+      - Try
+      - Catch
+
+## Día 21 (M 01/07)
+
+- Lanzamiento de runtime exceptions propias de java 
+  - IndexOutOfBoundsException -> throw en el código de charAt()
+  - NullPointerException
+  - ClassCastException
+- API de las excepciones
+- Excepciones propias
+  - RuntimeException - TechnicalException
+  - Checked Exception - BusinessException
+- Ejemplo.calculadora
+  - Refactorización OOP
+  - División por 0 - ArithmeticException  
+    - Rethrow como BusinessException
+    - Exception cause
+  - Scanner y Try with resources
+- Ejercicio: Factorial 
+  - Refactorización OOP
+  - Gestión de excepciones
+
+## Día 22 (X 02/07)
+
+- Ejercicio: Factorial (solución) 
+  - Refactorización OOP
+  - Gestión de excepciones
