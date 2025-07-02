@@ -353,9 +353,12 @@ Acción formativa: 25/1599 (23/1583)
 
 - Ejercicio: Factorial (solución)
   - Refactorización OOP
+  - Formateo de números: NumberFormat
   - Gestión de excepciones
 - Excepciones en Java (continuación)
+
   - Finally
+    - Uso despues de un catch con throw o return
   - Novedades
     - Con recursos (try-with-resources)
     - Multi-captura de excepciones
@@ -364,3 +367,26 @@ Acción formativa: 25/1599 (23/1583)
     - Tratadas incorrectamente (e.g. imprimir stack trace: `e.printStackTrace()`)
     - Perder la historia
     - Generalización
+
+- Arquitectura/Patrones de diseño
+  - MVC
+  - Vistas y controladores
+  - Ejemplo: calculadora
+    - Vista: CalcView
+    - Controlador: CalcController
+    - Aplicación: CalcApp
+
+## Día 23 (X 03/07)
+
+- Arquitectura/Patrones de diseño (continuación)
+  - Ejercicio: calculadora
+    - Gestión de excepciones
+- Testing
+  - ¿Qué es un test?
+  - Tipos de test
+    - Unitarios
+    - De integración
+    - De sistema
+  - Herramientas de testing en Java
+    - JUnit
+    - Mockito
