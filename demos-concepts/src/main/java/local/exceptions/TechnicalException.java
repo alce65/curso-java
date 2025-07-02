@@ -4,11 +4,11 @@ package local.exceptions;
 
 public class TechnicalException extends RuntimeException{
 
-    TechnicalException(String message) {
+    public TechnicalException(String message) {
         super(message);
     }
 
-    TechnicalException(String message, Throwable cause) {
+    public TechnicalException(String message, Throwable cause) {
         super(message, cause);
     }
 

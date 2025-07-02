@@ -37,13 +37,14 @@ public class Calculator {
         try {
             int result = num1 / num2;
             return result;
+            
         } catch (ArithmeticException e) {
             throw new BusinessException(
-                    ErrorCodes.ERROR_ZERO,
-                    "Dividiendo por 0",
-                    e);
+                ErrorCodes.ERROR_ZERO,
+                "Dividiendo por 0",
+                e);
+            } 
         }
-    }
 
     int restDivision() {
         int result = num1 % num2;
@@ -65,9 +66,11 @@ public class Calculator {
     }
 
     private int getInteger(String message) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println(message);
         int num = scanner.nextInt();
+
         return num;
     }
 
