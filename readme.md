@@ -224,7 +224,7 @@ Acción formativa: 25/1599 (23/1583)
 
 - Ejercicio: Factura (Invoice) - solución
 
-  - Análisis semántico -> modelado 
+  - Análisis semántico -> modelado
   - Relaciones de dependencia (composición)
   - Crear class y enums
   - Repartir responsabilidades
@@ -298,7 +298,7 @@ Acción formativa: 25/1599 (23/1583)
 - Jerarquía de Clases
   - Container (Abstract) -> Box / Bag
 - Instancia de objetos
-  - Override de toString  
+  - Override de toString
 - Jerarquía de Clases
   - Product (Abstract)
     - Food
@@ -322,16 +322,16 @@ Acción formativa: 25/1599 (23/1583)
     - Runtime exceptions: IndexOutOfBoundsException, NullPointerException,
     - Checked exceptions
 - Aparición de excepciones en Java
-    - Creación de excepciones en el sistema
-    - Tratamiento de excepciones
-      - Throws
-      - Throw
-      - Try
-      - Catch
+  - Creación de excepciones en el sistema
+  - Tratamiento de excepciones
+    - Throws
+    - Throw
+    - Try
+    - Catch
 
 ## Día 21 (M 01/07)
 
-- Lanzamiento de runtime exceptions propias de java 
+- Lanzamiento de runtime exceptions propias de java
   - IndexOutOfBoundsException -> throw en el código de charAt()
   - NullPointerException
   - ClassCastException
@@ -341,16 +341,26 @@ Acción formativa: 25/1599 (23/1583)
   - Checked Exception - BusinessException
 - Ejemplo.calculadora
   - Refactorización OOP
-  - División por 0 - ArithmeticException  
+  - División por 0 - ArithmeticException
     - Rethrow como BusinessException
     - Exception cause
   - Scanner y Try with resources
-- Ejercicio: Factorial 
+- Ejercicio: Factorial
   - Refactorización OOP
   - Gestión de excepciones
 
 ## Día 22 (X 02/07)
 
-- Ejercicio: Factorial (solución) 
+- Ejercicio: Factorial (solución)
   - Refactorización OOP
   - Gestión de excepciones
+- Excepciones en Java (continuación)
+  - Finally
+  - Novedades
+    - Con recursos (try-with-resources)
+    - Multi-captura de excepciones
+  - Malas prácticas
+    - No tratadas
+    - Tratadas incorrectamente (e.g. imprimir stack trace: `e.printStackTrace()`)
+    - Perder la historia
+    - Generalización
