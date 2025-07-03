@@ -358,7 +358,7 @@ Acción formativa: 25/1599 (23/1583)
 - Excepciones en Java (continuación)
 
   - Finally
-    - Uso despues de un catch con throw o return
+    - Uso después de un catch con throw o return
   - Novedades
     - Con recursos (try-with-resources)
     - Multi-captura de excepciones
@@ -375,6 +375,7 @@ Acción formativa: 25/1599 (23/1583)
     - Vista: CalcView
     - Controlador: CalcController
     - Aplicación: CalcApp
+    - Inyección de dependencias
 
 ## Día 23 (X 03/07)
 

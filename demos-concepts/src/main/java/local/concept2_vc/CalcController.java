@@ -16,22 +16,22 @@ public class CalcController extends Calc {
         this.num2 = num2;
     }
 
-    int add() {
+    public int add() {
         int result = num1 + num2;
         return result;
     }
 
-    int subtract() {
+    public int subtract() {
         int result = num1 - num2;
         return result;
     }
 
-    int multiply() {
+    public int multiply() {
         int result = num1 * num2;
         return result;
     }
 
-    int intDivide() throws BusinessException {
+    public int intDivide() throws BusinessException {
         try {
             int result = num1 / num2;
             return result;
@@ -44,23 +44,39 @@ public class CalcController extends Calc {
         }
     }
 
-    int restDivision() {
+    public double decimalDivide() throws BusinessException {
+        try {
+            double result = (double) num1 / num2;
+            return result;
+
+        } catch (ArithmeticException e) {
+            throw new BusinessException(
+                    ErrorCodes.ERROR_ZERO,
+                    "Dividiendo por 0",
+                    e);
+        }
+    }
+
+    public int restDivision() {
         int result = num1 % num2;
         return result;
     }
 
-    long calculateFactorial() throws BusinessException {
+    public long calculateFactorial() throws BusinessException {
         return calculateFactorial((short) num1);
     }
 
-    long calculateFactorial(short number) throws BusinessException  {
+    public long calculateFactorial(short number) throws BusinessException  {
+        
+        final int  MAX_SAFE_FACTORIAL_VALUE = 20;
+
         if (number < 0) {
            String message = "No se puede calcular el factorial de " + number; 
            // throw new TechnicalException(message);
            throw new BusinessException(ErrorCodes.ERROR_NEGATIVE, message);
         }
 
-        if (number > 10) {
+        if (number > MAX_SAFE_FACTORIAL_VALUE) {
             String message = "No se puede calcular el factorial de " + number; 
            // throw new TechnicalException(message);
            throw new BusinessException(ErrorCodes.ERROR_BIGGER_20, message);
@@ -74,5 +90,7 @@ public class CalcController extends Calc {
         }
         return result;
     }
+
+
 
 }
