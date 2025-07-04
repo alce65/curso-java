@@ -377,7 +377,7 @@ Acción formativa: 25/1599 (23/1583)
     - Aplicación: CalcApp
     - Inyección de dependencias
 
-## Día 23 (X 03/07)
+## Día 23 (J 03/07)
 
 - Arquitectura/Patrones de diseño (continuación)
   - Ejercicio: calculadora
@@ -390,4 +390,18 @@ Acción formativa: 25/1599 (23/1583)
     - De sistema
   - Herramientas de testing en Java
     - JUnit
-    - Mockito
+    - (Mockito)
+
+## Día 24 (V 04/07)
+
+- Tests unitarios con JUnit
+  - Configuración (review)
+  - Configuración sin Maven
+- Tests de CalcController
+  - assertEquals
+  - casos de uso
+  - casos con excepciones
+    - assertTrue() / fail
+  - valores especiales
+    - Double.NaN
+    - Double.POSITIVE_INFINITY
