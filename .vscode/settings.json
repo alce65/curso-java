@@ -1,8 +1,5 @@
 {
-    "cSpell.words": [
-        "Encapsulación",
-        "Gorko"
-    ],
+    "cSpell.words": ["Encapsulación", "Gorko", "jupiter"],
     "java.debug.settings.onBuildFailureProceed": true,
     "java.project.sourcePaths": [
         "demos/08-operators",

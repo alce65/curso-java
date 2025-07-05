@@ -1,11 +1,11 @@
 package local.concept2_vc;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import local.exceptions.BusinessException;
 import local.exceptions.ErrorCodes;
@@ -14,7 +14,7 @@ public class CalcControllerTest {
 
     private CalcController calculator;
 
-    @Before
+    @BeforeEach
     public void configure() {
         calculator = new CalcController();
     }
