@@ -20,6 +20,7 @@ public class CalcView extends Calc {
         this.ctr.setNum2(number2);
     }
 
+    @SuppressWarnings("resource")
     private int getInteger(String message) {
 
         Scanner scanner = new Scanner(System.in);
