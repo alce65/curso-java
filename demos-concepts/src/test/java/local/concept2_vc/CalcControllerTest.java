@@ -1,5 +1,6 @@
 package local.concept2_vc;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -243,6 +244,17 @@ public class CalcControllerTest {
             assertTrue(e.getMessage()
                 .contains(ErrorCodes.ERROR_NEGATIVE.toString()));
         }
+    };
+    
+    @Test
+    public void testFactorialNegativeLambda() {
+        int num1 = -3;
+        calculator.setNum1(num1);
+
+         Exception e = assertThrows(BusinessException.class, 
+        () ->  calculator.calculateFactorial());
+        assertTrue(e.getMessage()
+                .contains(ErrorCodes.ERROR_NEGATIVE.toString()));
     }
 
     @Test
@@ -256,6 +268,16 @@ public class CalcControllerTest {
             assertTrue(e.getMessage()
                 .contains(ErrorCodes.ERROR_BIGGER_20.toString()));
         }
+    }
+    
+    @Test
+    public void testFactorialBigger20Lambda() {
+        int num1 = 23;
+        calculator.setNum1(num1);
+        Exception e = assertThrows(BusinessException.class, 
+        () ->  calculator.calculateFactorial());
+        assertTrue(e.getMessage()
+                .contains(ErrorCodes.ERROR_BIGGER_20.toString()));
     }
 
 }
