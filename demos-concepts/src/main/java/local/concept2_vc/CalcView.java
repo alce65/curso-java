@@ -86,23 +86,23 @@ public class CalcView extends Calc {
 
     }
 
-    void showResult(String operation, int result) {
+    private void showResult(String operation, int result) {
         System.out.printf("El resultado de la %s es %s", operation, result);
         System.out.println("");
     }
 
-    void showResult(String operation, double result) {
+    private void showResult(String operation, double result) {
         System.out.printf("El resultado de la %s es %.2f", operation, result);
         System.out.println("");
     }
 
-    void showResult(String operation, long result) {
+    private void showResult(String operation, long result) {
         NumberFormat nf = NumberFormat.getInstance(Locale.GERMANY);
         System.out.printf("El factorial de %s es %s", operation, nf.format(result));
         System.out.println("");
     }
 
-    void showAllResults() throws BusinessException {
+    private void showAllResults() throws BusinessException {
         System.out.printf("Operaciones con %s y %s\n", number1, number2);
         showResult("suma", ctr.add());
         showResult("resta", ctr.subtract());
