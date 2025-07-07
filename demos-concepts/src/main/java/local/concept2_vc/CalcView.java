@@ -98,7 +98,7 @@ public class CalcView extends Calc {
 
     private void showResult(String operation, long result) {
         NumberFormat nf = NumberFormat.getInstance(Locale.GERMANY);
-        System.out.printf("El factorial de %s es %s", operation, nf.format(result));
+        System.out.printf("El %s de %s es %s", operation, number1, nf.format(result));
         System.out.println("");
     }
 

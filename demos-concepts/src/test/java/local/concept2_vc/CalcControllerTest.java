@@ -1,7 +1,7 @@
 package local.concept2_vc;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -280,4 +280,54 @@ public class CalcControllerTest {
                 .contains(ErrorCodes.ERROR_BIGGER_20.toString()));
     }
 
+    @Test
+    public void testPow_2_2() throws BusinessException {
+        // int num1 = 5;
+        // int num2 = 3;
+        calculator.setNum1(2);
+        calculator.setNum2(2);
+        // int result = calculator.add();
+        assertEquals(4, calculator.pow());
+    }
+
+    @Test
+    public void testPow_3_2() throws BusinessException {
+        // int num1 = 5;
+        // int num2 = 3;
+        calculator.setNum1(3);
+        calculator.setNum2(2);
+        // int result = calculator.add();
+        assertEquals(9, calculator.pow());
+    }
+
+    @Test
+    public void testPow_3_5() throws BusinessException {
+        // int num1 = 5;
+        // int num2 = 3;
+        calculator.setNum1(3);
+        calculator.setNum2(5);
+        // int result = calculator.add();
+        assertEquals(243, calculator.pow());
+    }
+
+    @Test
+    public void testPow_m3_2() throws BusinessException {
+        // int num1 = 5;
+        // int num2 = 3;
+        calculator.setNum1(-3);
+        calculator.setNum2(3);
+        // int result = calculator.add();
+        assertEquals(-27, calculator.pow());
+    }
+
+
+    @Test
+    public void testPow_3_m2() {
+        // int num1 = 5;
+        // int num2 = 3;
+        calculator.setNum1(3);
+        calculator.setNum2(-3);
+        // int result = calculator.add();
+        assertThrows(BusinessException.class, () -> calculator.pow());
+    }
 }

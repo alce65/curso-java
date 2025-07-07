@@ -1,104 +1,221 @@
 package local.concept2_vc;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
 
+import java.io.ByteArrayInputStream;
 // import java.io.ByteArrayInputStream;
-// import java.io.ByteArrayOutputStream;
-// import java.io.InputStream;
-// import java.io.PrintStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.NoSuchElementException;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+
+import local.exceptions.BusinessException;
+import local.exceptions.ErrorCodes;
+
 // import java.util.NoSuchElementException;
-
-// import org.junit.jupiter.api.AfterEach;
-// import org.junit.jupiter.api.BeforeEach;
-
 // import org.mockito.Mockito;
 
 public class CalcViewTest {
 
-    @Test
-    void testShow() {
+    private PrintStream originalOut;
+    private ByteArrayOutputStream outputStream;
+    private InputStream originalIn;
+    private CalcView view;
+    private CalcController ctrlMock;
 
-        CalcController ctrl = new CalcController();
-        CalcView view = new CalcView(ctrl);
-        view.show();
-        
+    @BeforeEach
+    public void setUp() {
+
+        ctrlMock = Mockito.mock(CalcController.class);
+        ;
+        view = new CalcView(ctrlMock);
+
+        // Guardar el input original
+        originalIn = System.in;
+        // Guarder el output original
+        originalOut = System.out;
+        outputStream = new ByteArrayOutputStream();
+        PrintStream newOut = new PrintStream(outputStream);
+
+        // Seteamos el system output
+        System.setOut(newOut);
     }
 
-    // private CalcController ctrMock;
-    // private CalcView view;
+    @Test
+    void testAdd() {
 
-    // InputStream originalIn;
-    // ByteArrayInputStream inputStream;
+        ctrlMock.setNum1(3);
+        ctrlMock.setNum2(2);
 
-    // PrintStream originalOut;
-    // ByteArrayOutputStream outputStream;
+        Mockito.when(ctrlMock.add()).thenReturn(5);
 
-    // @BeforeEach
-    // public void setUp() {
+        // creamos el string de lo que escribiría el usuario
+        String userInput = "3";
 
-    //     System.out.println("Setting up ConsoleTest...");
-    //     originalIn = System.in;
+        // creamos un ByteArrayInputStream a partir de un string
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
 
-    //     System.out.println("Setting up ConsoleTest...");
-    //     originalOut = System.out;
-    //     outputStream = new ByteArrayOutputStream();
-    //     System.setOut(new PrintStream(outputStream));
+        // se lo pasamos a System.in
+        System.setIn(inputStream);
 
-    //     ctrMock = Mockito.mock(CalcController.class);
-    //     view = new CalcView(ctrMock);
-    // }
+        try {
+            view.show();
+        } catch (NoSuchElementException e) {
+            // handle exception for exit while in the code
+        }
 
-    // @Test
-    // public void testShowAdd() {
-    //     ctrMock.setNum1(2);
-    //     ctrMock.setNum2(3);
-    //     Mockito.when(ctrMock.add()).thenReturn(5);
+        // Verify that the controller's add method was called
+        Mockito.verify(ctrlMock).add();
 
-    //     // Simulate user input 3
-    //     inputStream = new ByteArrayInputStream("3".getBytes());
-    //     System.setIn(inputStream);
-    //     try {
-    //         view.show();
-    //     } catch (NoSuchElementException e) {
+        // // Verify terminal output
 
-    //     }
+        String output = outputStream.toString().trim();
+        assert output.contains("El resultado de la suma es 5") : "Output did not contain expected result.";
 
-    //     // Verify that the controller's add method was called
-    //     Mockito.verify(ctrMock).add();
-    //     // Verify terminal output
+    }
 
-    //     String output = outputStream.toString().trim();
-    //     assert output.contains("El resultado de la suma es 5") : "Output did not contain expected result.";
+    @Test
+    void testSubtract() {
 
-    // }
+        ctrlMock.setNum1(5);
+        ctrlMock.setNum2(2);
 
-    // @Test
-    // public void testShowSubtraction() {
-    //     ctrMock.setNum1(5);
-    //     ctrMock.setNum2(3);
-    //     Mockito.when(ctrMock.subtract()).thenReturn(2);
+        Mockito.when(ctrlMock.subtract()).thenReturn(3);
 
-    //     // Simulate user input 3
-    //     inputStream = new ByteArrayInputStream("4".getBytes());
-    //     System.setIn(inputStream);
-    //     try {
-    //         view.show();
-    //     } catch (NoSuchElementException e) {
+        // creamos el string de lo que escribiría el usuario
+        String userInput = "4";
 
-    //     }
+        // creamos un ByteArrayInputStream a partir de un string
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
 
-    //     // Verify that the controller's add method was called
-    //     Mockito.verify(ctrMock).subtract();
-    //     // Verify terminal output
+        // se lo pasamos a System.in
+        System.setIn(inputStream);
 
-    //     String output = outputStream.toString().trim();
-    //     assert output.contains("El resultado de la resta es 2") : "Output did not contain expected result.";
+        try {
+            view.show();
+        } catch (NoSuchElementException e) {
+            // handle exception for exit while in the code
+        }
 
-    // }
+        // Verify that the controller's add method was called
+        Mockito.verify(ctrlMock).subtract();
 
-    // @AfterEach
-    // public void tearDown() {
-    //     System.setIn(originalIn);
-    //     System.setOut(originalOut);
-    // }
+        // // Verify terminal output
+
+        String output = outputStream.toString().trim();
+
+        assert output.contains("El resultado de la resta es 3") : "Output did not contain expected result.";
+
+    }
+
+    @Test
+    void testFactorial() throws BusinessException {
+
+        ctrlMock.setNum1(5);
+        view = new CalcView(ctrlMock);
+
+        Mockito.when(ctrlMock.calculateFactorial()).thenReturn(120l);
+
+        // creamos el string de lo que escribiría el usuario
+        String userInput = "9";
+
+        // creamos un ByteArrayInputStream a partir de un string
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+
+        // se lo pasamos a System.in
+        System.setIn(inputStream);
+
+        try {
+            view.show();
+        } catch (NoSuchElementException e) {
+            // handle exception for exit while in the code
+        }
+
+        // Verify that the controller's add method was called
+        Mockito.verify(ctrlMock).calculateFactorial();
+
+        // // Verify terminal output
+        String output = outputStream.toString().trim();
+        assert output.contains("El factorial de 0 es 120") : "Output did not contain expected result.";
+
+    }
+
+    @Test
+    void testFactorialNegative() throws BusinessException {
+
+        ctrlMock.setNum1(-5);
+        view = new CalcView(ctrlMock);
+
+        Mockito.when(ctrlMock.calculateFactorial())
+                .thenThrow(new BusinessException(ErrorCodes.ERROR_NEGATIVE, "Error"));
+
+        // creamos el string de lo que escribiría el usuario
+        String userInput = "9";
+
+        // creamos un ByteArrayInputStream a partir de un string
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+
+        // se lo pasamos a System.in
+        System.setIn(inputStream);
+
+        try {
+            view.show();
+        } catch (NoSuchElementException e) {
+            // handle exception for exit while in the code
+        }
+
+        // Verify that the controller's add method was called
+        Mockito.verify(ctrlMock).calculateFactorial();
+
+        // // Verify terminal output
+        String output = outputStream.toString().trim();
+        assert output.contains(ErrorCodes.ERROR_NEGATIVE.toString()) : "Output did not contain expected result.";
+
+    }
+
+    @Test
+    void testFactorialBigger() throws BusinessException {
+
+        ctrlMock.setNum1(25);
+        view = new CalcView(ctrlMock);
+
+        Mockito.when(ctrlMock.calculateFactorial())
+                .thenThrow(new BusinessException(ErrorCodes.ERROR_BIGGER_20, "Error"));
+
+        // creamos el string de lo que escribiría el usuario
+        String userInput = "9";
+
+        // creamos un ByteArrayInputStream a partir de un string
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
+
+        // se lo pasamos a System.in
+        System.setIn(inputStream);
+
+        try {
+            view.show();
+        } catch (NoSuchElementException e) {
+            // handle exception for exit while in the code
+        }
+
+        // Verify that the controller's add method was called
+        Mockito.verify(ctrlMock).calculateFactorial();
+
+        // // Verify terminal output
+        String output = outputStream.toString().trim();
+        assert output.contains(ErrorCodes.ERROR_BIGGER_20.toString()) : "Output did not contain expected result.";
+
+    }
+
+    @AfterEach
+    public void tearDown() {
+        // Restablecer el input
+        System.setIn(originalIn);
+        // Restablecer el output
+        System.setOut(originalOut);
+    }
 }
