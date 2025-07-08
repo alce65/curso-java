@@ -1,7 +1,10 @@
 package local.concept_test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.Scanner;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -29,6 +32,7 @@ public class InputTest {
         System.setIn(inputStream);
 
         // Comparamos userInput
+        assertEquals(userInput, simulateScanner());
 
     }
 
@@ -36,6 +40,14 @@ public class InputTest {
     void tearDown() {
         // Recuperamos el System.in original
         System.setIn(originalIn);
+    }
+
+
+    public String simulateScanner() {
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Ingresa tu nombre: ");
+            return scanner.nextLine();
+        }
     }
 
 }
