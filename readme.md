@@ -425,3 +425,11 @@ Acción formativa: 25/1599 (23/1583)
       - casos correctos thenReturn()
       - casos con excepciones thenThrow()
   - TDD
+
+## Día 26 (M 08/07)
+
+- Ampliación de CLI
+  - 2 menus
+  - test ajustados al nuevo CLI
+- Test parametrizados
+

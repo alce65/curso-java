@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import local.exceptions.BusinessException;
 import local.exceptions.ErrorCodes;
@@ -280,46 +282,16 @@ public class CalcControllerTest {
                 .contains(ErrorCodes.ERROR_BIGGER_20.toString()));
     }
 
-    @Test
-    public void testPow_2_2() throws BusinessException {
+    @ParameterizedTest(name = "[{index}] {0}^{1} = {2}")
+    @CsvSource(value = {"2,2,4", "3,2,9","3,5,243", "-3,3,-27"})
+    public void testPow_2_2(int n1, int n2, int e) throws BusinessException {
         // int num1 = 5;
         // int num2 = 3;
-        calculator.setNum1(2);
-        calculator.setNum2(2);
+        calculator.setNum1(n1);
+        calculator.setNum2(n2);
         // int result = calculator.add();
-        assertEquals(4, calculator.pow());
+        assertEquals(e, calculator.pow());
     }
-
-    @Test
-    public void testPow_3_2() throws BusinessException {
-        // int num1 = 5;
-        // int num2 = 3;
-        calculator.setNum1(3);
-        calculator.setNum2(2);
-        // int result = calculator.add();
-        assertEquals(9, calculator.pow());
-    }
-
-    @Test
-    public void testPow_3_5() throws BusinessException {
-        // int num1 = 5;
-        // int num2 = 3;
-        calculator.setNum1(3);
-        calculator.setNum2(5);
-        // int result = calculator.add();
-        assertEquals(243, calculator.pow());
-    }
-
-    @Test
-    public void testPow_m3_2() throws BusinessException {
-        // int num1 = 5;
-        // int num2 = 3;
-        calculator.setNum1(-3);
-        calculator.setNum2(3);
-        // int result = calculator.add();
-        assertEquals(-27, calculator.pow());
-    }
-
 
     @Test
     public void testPow_3_m2() {
