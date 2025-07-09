@@ -430,6 +430,22 @@ Acción formativa: 25/1599 (23/1583)
 
 - Ampliación de CLI
   - 2 menus
+  - System.exit(0)
   - test ajustados al nuevo CLI
 - Test parametrizados
+  - Instalación con Maven
+  - Uso
+- Lambdas
+  - Definición: @FunctionalInterface
+  - Uso
+- Datos
+  - Valores primitivos: números
+  - Objetos numéricos
+
+## Día 27 (X 09/07)
+
+- Datos (continuación)
+  - Strings / StringBuffers
+  - LocalDates / LocalTimeDates
+  - Ejemplo: calcular edad
 
