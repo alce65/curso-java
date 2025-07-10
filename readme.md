@@ -448,4 +448,23 @@ Acción formativa: 25/1599 (23/1583)
   - Strings / StringBuffers
   - LocalDates / LocalTimeDates
   - Ejemplo: calcular edad
+- Arrays
+  - Instancias
+  - Clase de utilidad Arrays
+- Genéricos
+  - Creación
+  - Uso
+- Collection: Introducción
+
+## Día 28 (X 10/07)
+
+- Collections
+  - Interface Collections
+  - List
+    - ArrayList
+    - LinkedList
+  - Set
+    - HashSet
+    - LinkedHashSet
+    - TreeSet
 
