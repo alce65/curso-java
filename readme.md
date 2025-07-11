@@ -456,7 +456,7 @@ Acción formativa: 25/1599 (23/1583)
   - Uso
 - Collection: Introducción
 
-## Día 28 (X 10/07)
+## Día 28 (J 10/07)
 
 - Collections
   - Interface Collections
@@ -467,4 +467,9 @@ Acción formativa: 25/1599 (23/1583)
     - HashSet
     - LinkedHashSet
     - TreeSet
+- Ejercicio
 
+## Día 29 (V 11/07)
+
+- Iterators
+- Ejercicio: solución
