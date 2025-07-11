@@ -1,0 +1,25 @@
+package local.collections.exercises.Ex05_Cards;
+
+
+// Construya mediante una List<String> una lista que represente una baraja (deck) americana,
+// con 4 palos (suits):
+// corazones (hearts)
+// picas (spades)
+// diamantes (diamonds)
+// tréboles (clubs)
+// 12 cartas cada uno (as (ace), 2, 3,…10, paje (J), reina (Q), rey (K)). 
+// Construya el array con dos bucles anidados. 
+// Barajela con el método shuffle de Collections. 
+// Construya una función repartir que dada una baraja devuelva una mano de “n” cartas, 
+// empezando por el final del array (¡la baraja está boca abajo!), 
+// use sublistas (subList) y 
+// que suprime las cartas de la baraja (método clear), 
+// para evitar poder dar dos veces la misma carta. 
+// Emplee esta función para repartir “n” cartas a “m” jugadores, 
+// recibiendo tanto n como m a través de los argumentos del programa. 
+// Previamente debe barajar las cartas,
+// para asegurarse que nadie sabe que cartas se repartirán a cada uno.
+
+public class CardsApp {
+
+}
