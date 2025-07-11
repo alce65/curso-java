@@ -1,14 +1,15 @@
 package local.collections.exercises;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.ArrayList;
 
 public class Ex01OOP {
-    private ArrayList<String> listDays = new ArrayList<>();
-    private ArrayList<String> listSecond = new ArrayList<>();
+    private List<String> listDays = new ArrayList<>();
+    private List<String> listSecond = new ArrayList<>();
 
-    private void populateList(ArrayList<String> list) {
+    private void populateList(List<String> list) {
         list.add("Lunes");
         list.add("Martes");
         list.add("Miércoles");
@@ -27,11 +28,11 @@ public class Ex01OOP {
         }
     }
 
-    private void populateSecondList(ArrayList<String> list) {
+    private void populateSecondList(List<String> list) {
         listSecond.addAll(list);
     }
 
-    private void mergeLists(ArrayList<String> target, ArrayList<String> source) {
+    private void mergeLists(List<String> target, List<String> source) {
         target.addAll(source);
     }
 

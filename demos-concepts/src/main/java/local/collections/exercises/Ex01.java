@@ -2,10 +2,12 @@ package local.collections.exercises;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 
 public class Ex01 {
-    ArrayList<String> listDays = new ArrayList<>();
+    List<String> listDays = new ArrayList<>();
 
     public void createWeek() {
 
@@ -66,6 +68,7 @@ public class Ex01 {
 
         if (listDays.contains("Lunes")) {
             System.out.println("Si existe Lunes");
+            System.out.println("------------------------------");
         }
 
         // Busca si existe en la lista un elemento que se denomine «Lunes». No importa
@@ -73,26 +76,28 @@ public class Ex01 {
 
         Iterator<String> it2 = listDays.iterator();
         while (it2.hasNext()) {
-            if (it2.next().toUpperCase() == "LUNES") {
-                System.out.println("Si existe" + it2.next());
+            String item = it2.next();
+            // if (item.toUpperCase().equals("LUNES")) {
+            if (item.equalsIgnoreCase("LUNES")) {
+                System.out.println("Si existe " + item);
             } else {
                 System.out.println("No existe Lunes");
             }
         }
 
         // Ordena la lista y muestra su contenido.
-        Collections.sort(listDays);
+        Collections.sort(listDays,  Comparator.reverseOrder());
+        // listDays.sort( Comparator.reverseOrder());
         System.out.println(listDays);
 
         // Borra todos los elementos de la lista.
         listDays.clear();
         System.out.println(listDays);
-
     }
 
     public static void main(String[] args) {
 
-        Ex01 ex = new Ex01();
-        ex.createWeek();
+        Ex01 exercise = new Ex01();
+        exercise.createWeek();
     }
 }
