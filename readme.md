@@ -467,9 +467,19 @@ Acción formativa: 25/1599 (23/1583)
     - HashSet
     - LinkedHashSet
     - TreeSet
-- Ejercicio
+- Ejercicio: Listas
 
 ## Día 29 (V 11/07)
 
 - Iterators
 - Ejercicio: solución
+  - Versión básica
+  - Versión OOP
+- Ejercicio: Palíndromo (Stack)
+- Ejercicio: Figuras (Listas & Interfaces)
+- Ejercicio propuesto: Baraja
+
+## Día 30 (L 14/07)
+
+- Ejercicio propuesto: Baraja
+- Maps
