@@ -483,3 +483,13 @@ Acción formativa: 25/1599 (23/1583)
 
 - Ejercicio propuesto: Baraja
 - Maps
+- Ejercicio:
+  - PhoneAgenda (Map)
+  - PhoneAgenda (sin Map)
+
+## Día 31 (M 15/07)
+
+- Solución PhoneAgenda (Map v. sin Map)
+  - == v. equals
+  - uso de streams
+- Persistencia: Ficheros
