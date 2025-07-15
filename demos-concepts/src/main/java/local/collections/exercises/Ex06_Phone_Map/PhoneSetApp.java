@@ -1,6 +1,5 @@
 package local.collections.exercises.Ex06_Phone_Map;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -29,22 +28,22 @@ public class PhoneSetApp {
         phoneDirectory.add(employee);
      }
 
-    //  private Integer generateKey(String name, String surname, String surname2) {
-    //     StringBuilder key = new StringBuilder();
-    //     key.append(name.toLowerCase().trim());
+     private String generateFullName(String name, String surname, String surname2) {
+        StringBuilder fullName = new StringBuilder();
+        fullName.append(name.toLowerCase().trim());
 
-    //     if (surname != null && !surname.isEmpty()) {
-    //         key.append(" ").append(surname.toLowerCase().trim());
-    //     }
+        if (surname != null && !surname.isEmpty()) {
+            fullName.append(" ").append(surname.toLowerCase().trim());
+        }
 
-    //     if (surname2 != null && !surname2.isEmpty()) {
-    //         key.append(" ").append(surname2.toLowerCase().trim());
-    //     }
-    //     System.out.println("Key : " + key);
+        if (surname2 != null && !surname2.isEmpty()) {
+            fullName.append(" ").append(surname2.toLowerCase().trim());
+        }
+        System.out.println("Full Name : " + fullName);
 
-    //     return key.toString().hashCode();
+        return fullName.toString();
 
-    //  }
+     }
 
     public void showDirectory() {
         System.out.println("\n📞 COMPLETE PHONE DIRECTORY");
@@ -59,29 +58,34 @@ public class PhoneSetApp {
             System.out.println(employee);
             System.out.println("-".repeat(30));
         }
+        System.out.println("=".repeat(50));
     }
 
     /**
      * Searches for an entry by name and surnames
      */
     public Employee searchEntry(String name, String surname, String surname2) {
-        // Integer key = generateKey(name, firstSurname, secondSurname);
 
-        List<Employee> result = phoneDirectory.stream().filter(
-            empleado -> empleado.name == name && empleado.surname == surname && empleado.surname2 == surname2
-        ).toList();
+        Optional<Employee> result = phoneDirectory.stream().filter(
+            empleado -> empleado.name.equals(name) && empleado.surname.equals(surname) && empleado.surname2.equals(surname2)
+        ).findFirst();
 
-        return result.getFirst();
+        return result.orElseThrow();
      }
 
     // /**
     //  * Searches for an entry by full name (format: "name surname1 surname2")
     //  */
-    // public Employee searchByFullName(String fullName) {
-    //     String user = fullName.toLowerCase().trim();
-    //     Integer hash = user.hashCode();
-    //     return phoneDirectory.get(hash);
-    // }
+    public Employee searchByFullName(String searchFullName) {
+        
+         Optional<Employee> result  = phoneDirectory.stream().filter(
+            (employee) -> {
+                String fullName = generateFullName(employee.name,employee.surname, employee.surname2);
+                return fullName.equalsIgnoreCase(searchFullName);
+            }
+        ).findFirst();
+         return result.orElseThrow(); 
+    }
 
      public static void main(String[] args) {
         PhoneSetApp phoneAgende = new PhoneSetApp();
@@ -91,12 +95,12 @@ public class PhoneSetApp {
         
         System.out.println(phoneAgende);
         phoneAgende.showDirectory();
-        System.out.println(
+        System.out.println("Search 1\n" + 
             phoneAgende.searchEntry("Pepe", "Pérez", "López")
         );
-        // System.out.println(
-        //     phoneAgende.searchByFullName("Pepe López Pérez")
-        // );
+        System.out.println("Search 2\n" + 
+            phoneAgende.searchByFullName("Pepe Pérez López")
+        );
      }
 
 }
