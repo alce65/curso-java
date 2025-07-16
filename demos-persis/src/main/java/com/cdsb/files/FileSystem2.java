@@ -15,11 +15,11 @@ public class FileSystem2 {
         StringBuilder sb = new StringBuilder();
         Path path = Path.of(pathName);
 
-        if(Files.notExists(path)) {
+        if (Files.notExists(path)) {
             return MessagesFS.FO_NOT.message.formatted(pathName);
         }
 
-        if(!Files.isDirectory(path)) {
+        if (!Files.isDirectory(path)) {
             return MessagesFS.NOT_IS_FO.message.formatted(pathName);
         }
 
@@ -31,7 +31,7 @@ public class FileSystem2 {
             });
             return sb.toString();
         } catch (IOException e) {
-            return "Error listing files" + "\n" + e.getMessage();
+            return MessagesFS.ERROR_LIST + "\n" + e.getMessage();
         }
     }
 
@@ -43,25 +43,23 @@ public class FileSystem2 {
 
         Path path = Paths.get(pathName);
 
-        if(Files.notExists(path)) {
+        if (Files.notExists(path)) {
             return MessagesFS.FO_NOT.message.formatted(pathName);
         }
 
-        if(!Files.isDirectory(path)) {
+        if (!Files.isDirectory(path)) {
             return MessagesFS.NOT_IS_FO.message.formatted(pathName);
         }
 
         try {
-            Files.list(path)
-            .filter(file -> !Files.isDirectory(file))
-            .forEach((p) -> {
+            Files.list(path).filter(file -> !Files.isDirectory(file)).forEach((p) -> {
                 char type = Files.isDirectory(p) ? 'D' : 'F';
                 sb.append("[").append(type).append("] ");
                 sb.append(p.getFileName()).append("\n");
             });
             return sb.toString();
         } catch (IOException e) {
-           return "Error listing files" + "\n" + e.getMessage();
+            return MessagesFS.ERROR_LIST + "\n" + e.getMessage();
         }
     }
 
@@ -69,11 +67,11 @@ public class FileSystem2 {
     public static String createFolder(String pathName) {
         Path path = Path.of(pathName);
 
-        if(Files.exists(path) && Files.isDirectory(path)) {
+        if (Files.exists(path) && Files.isDirectory(path)) {
             return MessagesFS.FO_EXISTS.message.formatted(pathName);
         }
 
-        if(Files.exists(path) && !Files.isDirectory(path)) {
+        if (Files.exists(path) && !Files.isDirectory(path)) {
             return MessagesFS.FI_EXISTS.message.formatted(pathName);
         }
 
@@ -81,8 +79,7 @@ public class FileSystem2 {
             Files.createDirectories(path);
             return MessagesFS.OK_FO_CREATE.message.formatted(pathName);
         } catch (IOException e) {
-            return MessagesFS.FAIL_FO.message.formatted(pathName) + "\n"
-                    + e.getMessage();
+            return MessagesFS.FAIL_FO.message.formatted(pathName) + "\n" + e.getMessage();
         }
     }
 
@@ -96,60 +93,60 @@ public class FileSystem2 {
         try {
             Files.delete(path);
         } catch (IOException e) {
-            return MessagesFS.FAIL_DELETE.message.formatted(pathName) + "\n"
-                + e.getMessage();
+            return MessagesFS.FAIL_DELETE.message.formatted(pathName) + "\n" + e.getMessage();
         }
         return MessagesFS.OK_DELETE.message.formatted(pathName);
 
     }
 
     public static String deleteFileOrFolder(String pathName) {
-       Path path = Paths.get(pathName);
+        Path path = Paths.get(pathName);
         if (Files.notExists(path)) {
             return ("File or directory does not exist: " + pathName);
         }
 
         if (!Files.isDirectory(path)) {
-                deleteFile(pathName);
+            deleteFile(pathName);
         }
 
         try {
-            Files.walk(path)
-            .sorted((a, b) -> b.compareTo(a)) // Sort in reverse order to delete files
-                                              // before directories
+            boolean hasError = Files.walk(path).sorted((a, b) -> b.compareTo(a))
+                    // Sort in reverse order to delete files before directories
+                    .anyMatch(p -> {
+                        try {
+                            Files.delete(path);
+                            return false;
+                        } catch (IOException e) {
+                            return true;
+                        }
+                    });
 
-            .forEach(p -> {
-                deleteOneFile(p);
-            });
-            return "Deleted directory: " + pathName;
+            if (hasError) {
+                return MessagesFS.FAIL_DELETE.message.formatted("directory", pathName);
+            }
+            return MessagesFS.OK_DELETE.message.formatted(pathName);
         } catch (IOException e) {
-            return "Error deleting: " + pathName + " - " + e.getMessage();
+            return MessagesFS.FAIL_DELETE.message.formatted(pathName) + "\n" + e.getMessage();
         }
-    }
-
-    private static boolean deleteOneFile(Path path) {
-        try {
-            Files.delete(path);
-            return true;
-        } catch (IOException e) {
-            return false;
-        }
-
     }
 
     // Crear ficheros
     public static String createFile(String pathName) {
         Path path = Paths.get(pathName);
 
+        if (Files.exists(path) && Files.isDirectory(path)) {
+            return MessagesFS.FO_EXISTS.message.formatted(pathName);
+        }
+
         if (Files.exists(path)) {
             return MessagesFS.FI_EXISTS.message.formatted(pathName);
         }
+
         try {
             Files.createFile(path);
             return MessagesFS.OK_FI_CREATE.message.formatted(pathName);
         } catch (IOException e) {
-            return MessagesFS.FAIL_FI.message.formatted(pathName)+ "\n"
-                    + e.getMessage();
+            return MessagesFS.FAIL_FI.message.formatted(pathName) + "\n" + e.getMessage();
         }
     }
 
@@ -161,9 +158,9 @@ public class FileSystem2 {
             return MessagesFS.CONTENT_EMPTY.message.formatted(pathName);
         }
 
-        if(Files.notExists(path)) {
+        if (Files.notExists(path)) {
             String result = createFile(pathName);
-            if (!result.contains("created")){
+            if (!result.contains("created")) {
                 return result;
             }
         }
@@ -171,8 +168,7 @@ public class FileSystem2 {
         try {
             Files.writeString(path, content);
         } catch (IOException e) {
-            return MessagesFS.ERROR_WR.message.formatted(pathName) + "\n"
-            + e.getMessage();
+            return MessagesFS.ERROR_WR.message.formatted(pathName) + "\n" + e.getMessage();
         }
 
         return MessagesFS.OK_WRITE.message.formatted(pathName, content);
@@ -185,7 +181,7 @@ public class FileSystem2 {
         List<String> lines = new ArrayList<>();
         Path path = Paths.get(pathName);
         if (!Files.exists(path)) {
-            lines.add( MessagesFS.FI_NOT.message.formatted(pathName));
+            lines.add(MessagesFS.FI_NOT.message.formatted(pathName));
             return lines;
         }
 
@@ -193,9 +189,7 @@ public class FileSystem2 {
             lines.addAll(Files.readAllLines(path));
             return lines;
         } catch (IOException e) {
-            lines.add(
-                MessagesFS.ERROR_RE.message.formatted(pathName)
-            );
+            lines.add(MessagesFS.ERROR_RE.message.formatted(pathName));
             lines.add(e.getMessage());
             return lines;
         }
@@ -204,13 +198,17 @@ public class FileSystem2 {
 
     public static String readFileToString(String pathName) {
 
+        StringBuilder content = new StringBuilder();
         Path path = Paths.get(pathName);
         if (!Files.exists(path)) {
             return MessagesFS.FI_NOT.message.formatted(pathName);
         }
-
-        // StringBuilder content = new StringBuilder();
-        return "";
+        try {
+            content.append(Files.readString(path));
+            return content.toString();
+        } catch (IOException e) {
+            return MessagesFS.ERROR_RE.message.formatted(pathName) + "\n" + e.getMessage();
+        }
     }
 
     public static void main(String[] args) {

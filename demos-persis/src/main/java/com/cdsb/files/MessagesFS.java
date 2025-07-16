@@ -13,11 +13,13 @@ public enum MessagesFS {
     CONTENT_EMPTY("W", "Content is empty, nothing to write to file: %s"),
     NOT_IS_FO("W", "%s is not a directory"),
     FIS_NOT("W", "No files found in the directory: %s"),
+
     FAIL_FO("E", "Failed to create directory: %s"),
     FAIL_FI("E", "Failed to create file: %s"),
     FAIL_DELETE("E", "Failed to delete %s: %s"),
     ERROR_WR("E", "Error writing file: %s"),
-    ERROR_RE("E", "Error reading file: %s");
+    ERROR_RE("E", "Error reading file: %s"),
+    ERROR_LIST("E", "Error listing from: %s");
 
     String code;
     String message;
