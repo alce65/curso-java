@@ -492,4 +492,12 @@ Acción formativa: 25/1599 (23/1583)
 - Solución PhoneAgenda (Map v. sin Map)
   - == v. equals
   - uso de streams
-- Persistencia: Ficheros
+- Persistencia: Ficheros (1)
+  -  java.io.File;
+- Ejercicio: SaveUserData
+
+## Día 32 (X 16/07)
+
+- Solución ejercicio SaveUserData
+- Persistencia: Ficheros (2)
+  - java.nio.file.Path...
