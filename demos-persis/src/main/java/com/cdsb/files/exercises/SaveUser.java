@@ -3,7 +3,13 @@ package com.cdsb.files.exercises;
 import java.util.List;
 import java.util.Scanner;
 
-import com.cdsb.files.FileSystem1;
+
+// Pregúntale al usuario:
+// - Nombre
+// - Apellido1
+// - Apellido2
+// - Guárdalo en un fichero user.txt
+// - Muéstrale al usuario lo que has guardado
 
 public class SaveUser {
 
@@ -15,6 +21,9 @@ public class SaveUser {
     public SaveUser(String pathName) {
         this.pathName = pathName;
         getUserData();
+        System.out.println("-".repeat(50));
+        System.out.println("Objeto en memoria");
+        System.out.println("-".repeat(50));
         System.out.println(this);
     }
 
@@ -26,6 +35,7 @@ public class SaveUser {
                 "Dime tu primer apellido",
                 "Dime tu segundo apellido"
         };
+        @SuppressWarnings("resource")
         Scanner scanner = new Scanner(System.in);
 
         for (int i = 0; i < questions.length; i++) {
@@ -40,8 +50,9 @@ public class SaveUser {
     }
 
     public void saveUserData() {
-        FileSystem1.createFile(pathName);
-        FileSystem1.writeFile(pathName, makeFullName());
+        FileSystem.createFile(pathName);
+        String result = FileSystem.writeFile(pathName, makeFullName());
+        System.out.println(result);
     }
 
     private String makeFullName() {
@@ -53,12 +64,15 @@ public class SaveUser {
     }
 
     public void readUserData() {
-        List<String> read = FileSystem1.readFile(pathName);
+        List<String> read = FileSystem.readFileToList(pathName);
         showUserData(read);
     }
 
-    private void showUserData( List<String> list) {
-        // TODO
+    private void showUserData(List<String> list) {
+        System.out.println("-".repeat(50));
+        System.out.println("Leído desde el fichero");
+        System.out.println("-".repeat(50));
+        list.stream().forEach(System.out::println);
     }
 
 
@@ -83,8 +97,9 @@ public class SaveUser {
     }
 
     public static void main(String[] args) {
-        new SaveUser("demos-persis/resources/sample.txt");
-
+        SaveUser user = new SaveUser("demos-persis/resources/sample.txt");
+        user.saveUserData();
+        user.readUserData();
     }
 
 }
