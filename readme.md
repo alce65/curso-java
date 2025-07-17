@@ -501,3 +501,13 @@ Acción formativa: 25/1599 (23/1583)
 - Solución ejercicio SaveUserData
 - Persistencia: Ficheros (2)
   - java.nio.file.Path...
+  - manejo de Streams 
+- Ejercicio: completar FileSystem2
+
+
+## Día 33 (J 17/07)
+
+- Revisión FileSystem2
+- Streams
+- Serialización
+  - JSON
