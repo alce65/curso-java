@@ -406,10 +406,10 @@ Acción formativa: 25/1599 (23/1583)
     - Double.NaN
     - Double.POSITIVE_INFINITY
 
-
 ## Día 25 (L 07/07)
 
 - Actualizaciones del sistema
+
   - JDK 21
   - Maven 3.9
   - JUnit 5
@@ -493,7 +493,7 @@ Acción formativa: 25/1599 (23/1583)
   - == v. equals
   - uso de streams
 - Persistencia: Ficheros (1)
-  -  java.io.File;
+  - java.io.File;
 - Ejercicio: SaveUserData
 
 ## Día 32 (X 16/07)
@@ -501,9 +501,8 @@ Acción formativa: 25/1599 (23/1583)
 - Solución ejercicio SaveUserData
 - Persistencia: Ficheros (2)
   - java.nio.file.Path...
-  - manejo de Streams 
+  - manejo de Streams
 - Ejercicio: completar FileSystem2
-
 
 ## Día 33 (J 17/07)
 
@@ -511,3 +510,16 @@ Acción formativa: 25/1599 (23/1583)
 - Streams
 - Serialización
   - JSON
+- Serialización JSON con Jackson
+  - Configuración de Jackson
+  - Ejemplo: serializar un objeto
+  - Ejemplo: serializar una lista de objetos
+  - Problemas con LocalDate y LocalDateTime
+
+## Día 34 (V 18/07)
+
+- Serialización - JSON (continuación)
+  - Serialización de fechas y horas LocalDate y LocalDateTime
+    (https://www.baeldung.com/jackson-serialize-dates)
+- Abstracción de los métodos de serialización
+- ¿Ejercicio: serializar una lista de objetos?
