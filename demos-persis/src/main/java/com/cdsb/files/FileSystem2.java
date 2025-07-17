@@ -114,7 +114,7 @@ public class FileSystem2 {
                     // Sort in reverse order to delete files before directories
                     .anyMatch(p -> {
                         try {
-                            Files.delete(path);
+                            Files.delete(p);
                             return false;
                         } catch (IOException e) {
                             return true;
@@ -184,7 +184,6 @@ public class FileSystem2 {
             lines.add(MessagesFS.FI_NOT.message.formatted(pathName));
             return lines;
         }
-
         try {
             lines.addAll(Files.readAllLines(path));
             return lines;
@@ -198,14 +197,12 @@ public class FileSystem2 {
 
     public static String readFileToString(String pathName) {
 
-        StringBuilder content = new StringBuilder();
         Path path = Paths.get(pathName);
         if (!Files.exists(path)) {
             return MessagesFS.FI_NOT.message.formatted(pathName);
         }
         try {
-            content.append(Files.readString(path));
-            return content.toString();
+            return Files.readString(path);
         } catch (IOException e) {
             return MessagesFS.ERROR_RE.message.formatted(pathName) + "\n" + e.getMessage();
         }
