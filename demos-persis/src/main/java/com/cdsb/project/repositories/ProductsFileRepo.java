@@ -12,31 +12,48 @@ public class ProductsFileRepo implements Repo<Integer, Product> {
 
     @Override
     public List<Product> readAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return List.of(jsonTools.fromJsonFile(Product[].class));
     }
 
     @Override
     public Product readById(Integer id) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+        return List.of(jsonTools.fromJsonFile(Product[].class)).stream().filter(p -> p.getId() == id).findFirst()
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado al leer"));
     }
 
     @Override
     public Product create(Product data) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+        List<Product> products = readAll();
+        products.stream().filter(p -> p.getId() == data.getId()).findFirst().ifPresent(p -> {
+            throw new RuntimeException("Producto ya existente");
+        });
+        products.add(data);
+        jsonTools.toJsonFile(products);
+        return data;
     }
 
     @Override
     public Product updateById(Product data) throws Exception {
-        // TODO Auto-generated method stub
-        return null;
+        List<Product> products = readAll();
+        products.stream().filter(p -> p.getId() == data.getId()).findFirst().ifPresentOrElse(product -> {
+            products.remove(product);
+            products.add(data);
+            jsonTools.toJsonFile(products);
+        }, () -> {
+            throw new RuntimeException("Producto no encontrado al actualizar");
+        });
+        return data;
     }
 
     @Override
     public Product deleteById(Integer id) throws Exception {
-        // TODO Auto-generated method stub
+        List<Product> products = readAll();
+        products.stream().filter(p -> p.getId() == id).findFirst().ifPresentOrElse(product -> {
+            products.remove(product);
+            jsonTools.toJsonFile(products);
+        }, () -> {
+            throw new RuntimeException("Producto no encontrado al eliminar");
+        });
         return null;
     }
 
