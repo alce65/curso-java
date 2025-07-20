@@ -522,4 +522,15 @@ Acción formativa: 25/1599 (23/1583)
   - Serialización de fechas y horas LocalDate y LocalDateTime
     (https://www.baeldung.com/jackson-serialize-dates)
 - Abstracción de los métodos de serialización
-- ¿Ejercicio: serializar una lista de objetos?
+
+- CRUD
+  - Concepto de CRUD
+  - Patrón de diseño: Repositorio
+  - Demo: interface Repository
+  - Demo: entidad Product
+  - Demo: ProductInMemoryRepository
+- Propuestas
+  - Testing de ProductInMemoryRepository
+  - Demo: ProductFileRepository
+
+## Día 35 (L 21/07)
