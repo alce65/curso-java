@@ -80,3 +80,7 @@ buildNumber.properties
 # System files
 .DS_Store
 Thumbs.db
+
+
+# dotenv
+.env
