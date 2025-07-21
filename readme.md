@@ -534,3 +534,7 @@ Acción formativa: 25/1599 (23/1583)
   - Demo: ProductFileRepository
 
 ## Día 35 (L 21/07)
+
+- Review: ProductFileRepository
+
+-Persistencia en bases de datos (DB)
