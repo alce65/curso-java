@@ -17,14 +17,21 @@ public class ProductsFileRepo implements Repo<Integer, Product> {
 
     @Override
     public Product readById(Integer id) throws Exception {
-        return List.of(jsonTools.fromJsonFile(Product[].class)).stream().filter(p -> p.getId() == id).findFirst()
+        return List.of(jsonTools.fromJsonFile(Product[].class))
+                .stream()
+                .filter(p -> p.getId() == id)
+                .findFirst()
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado al leer"));
     }
 
     @Override
     public Product create(Product data) throws Exception {
         List<Product> products = readAll();
-        products.stream().filter(p -> p.getId() == data.getId()).findFirst().ifPresent(p -> {
+        products
+        .stream()
+        .filter(p -> p.getId() == data.getId())
+        .findFirst()
+        .ifPresent(p -> {
             throw new RuntimeException("Producto ya existente");
         });
         products.add(data);
@@ -35,7 +42,9 @@ public class ProductsFileRepo implements Repo<Integer, Product> {
     @Override
     public Product updateById(Product data) throws Exception {
         List<Product> products = readAll();
-        products.stream().filter(p -> p.getId() == data.getId()).findFirst().ifPresentOrElse(product -> {
+        products.stream()
+        .filter(p -> p.getId() == data.getId())
+        .findFirst().ifPresentOrElse(product -> {
             products.remove(product);
             products.add(data);
             jsonTools.toJsonFile(products);
@@ -48,13 +57,18 @@ public class ProductsFileRepo implements Repo<Integer, Product> {
     @Override
     public Product deleteById(Integer id) throws Exception {
         List<Product> products = readAll();
-        products.stream().filter(p -> p.getId() == id).findFirst().ifPresentOrElse(product -> {
+        final Product[] deletedProducts = new Product[1];
+        products.stream()
+        .filter(p -> p.getId() == id)
+        .findFirst()
+        .ifPresentOrElse(product -> {
             products.remove(product);
+            deletedProducts[1] = product;
             jsonTools.toJsonFile(products);
         }, () -> {
             throw new RuntimeException("Producto no encontrado al eliminar");
         });
-        return null;
+        return deletedProducts[0];
     }
 
 }
