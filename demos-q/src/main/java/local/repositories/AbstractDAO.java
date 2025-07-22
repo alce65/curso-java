@@ -47,7 +47,7 @@ public abstract class AbstractDAO<E> implements DAO<E> {
         entityManager.getTransaction().begin();
         entityManager.persist(entity);
         entityManager.getTransaction().commit();
-        return entity;
+        return entity; // Return the saved entity
     }
 
     @Override
