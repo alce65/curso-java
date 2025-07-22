@@ -182,7 +182,7 @@ public class Meeting {
         // Default constructor for JPA
     }
 
-    public Meeting(LocalDateTime date, String description) {
+    public Meeting(LocalDateTime date, String description) {fin
         this.date = date;
         this.description = description;
     }

@@ -538,3 +538,16 @@ Acción formativa: 25/1599 (23/1583)
 - Review: ProductFileRepository
 
 -Persistencia en bases de datos (DB)
+
+- Bases Datos: SQL y No SQL. Historia
+  - MySQL -> Server y Cliente (workbench)
+  - Creamos DB (Schema)
+
+- Nuevo proyecto Maven
+- Dependencias
+  - Connector MySql
+  - Hibernate (ORM)
+  - dotenv-java (info sensible)
+
+- META-INFO\persistence.xml
+- EntityManager
