@@ -1,7 +1,6 @@
 package local.connections;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import io.github.cdimascio.dotenv.Dotenv;

@@ -5,22 +5,9 @@ import java.time.LocalDateTime;
 import local.entities.Meeting;
 import local.repositories.MeetingDAO;;
 
-/**
- * Hello world!
- */
-public final class App {
-    private App() {
-
-    }
-
-    /**
-     * Says hello to the world.
-     *
-     * @param args The arguments of the program.
-     */
-    public static void main(String[] args) {
-        System.out.println("Meetings application");
-        MeetingDAO meetingDAO = new MeetingDAO();
+public final class AppMeetings {
+    private static void checkMeeting() {
+         MeetingDAO meetingDAO = new MeetingDAO();
 
         Meeting m1 = meetingDAO.save(new Meeting("Primera reunion", LocalDateTime.now().plusDays(2)));
         Meeting m2 = meetingDAO.save(new Meeting("Segunda reunion", LocalDateTime.now().plusDays(3)));
@@ -34,6 +21,8 @@ public final class App {
         System.out.println("----------- Find by ID invalid -----------");
         System.out.println(meetingDAO.findById(100));
 
+
+
         System.out.println("----------- Delete by ID 1 (si existe)-----------");
         // try {
         // meetingDAO.delete(meetingDAO.findById(2).get());
@@ -41,13 +30,18 @@ public final class App {
         // System.out.println("Meeting ya eliminado");
         // }
 
-        meetingDAO.findById(1).ifPresent(entity -> meetingDAO.delete(entity));
+        meetingDAO.findById(1).ifPresentOrElse(
+            entity -> meetingDAO.delete(entity),
+            () -> System.out.println("Reunión no encontrada: no se ha podido eliminar"));
         System.out.println("----------- Find All after delete -----------");
         System.out.println(meetingDAO.findAll());
 
+
+
         try {
-            Meeting m3 = meetingDAO.findById(2).orElseThrow(() -> new RuntimeException("Meeting not found"));
-            System.out.println("----------- Update by ID 1 -----------");
+            Meeting m3 = meetingDAO.findById(3).orElseThrow(() -> new RuntimeException("Meeting not found"));
+            meetingDAO.detach(m3);
+            System.out.println("----------- Update by ID 2 -----------");
             m3.setDescription("Reunion actualizada");
             m3.setDate(LocalDateTime.now().plusDays(4));
             meetingDAO.update(m3);
@@ -57,5 +51,11 @@ public final class App {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println("Meetings application");
+        checkMeeting();
     }
 }
