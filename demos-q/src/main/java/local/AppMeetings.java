@@ -1,5 +1,6 @@
 package local;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import local.repositories.MeetingDAO;;
 public final class AppMeetings {
     private static MeetingDAO meetingDAO = new MeetingDAO();
 
+    @SuppressWarnings("unused")
     private static void checkMeetingInitial() {
 
         Meeting m1 = meetingDAO.save(new Meeting("Primera reunion", LocalDateTime.now().plusDays(2)));
@@ -64,7 +66,7 @@ public final class AppMeetings {
 
         // 2025-07-25T10:36:45.258813
         System.out.println("----------- Find by date -----------");
-        List<Meeting> m = meetingDAO.findByDate(LocalDateTime.of(2025, 07, 25,10,36, 45));
+        List<Meeting> m = meetingDAO.findByDate(LocalDate.of(2025, 07, 25));
         System.out.println(m);
         Meeting m1 = meetingDAO.nextMeetingBasic();
         System.out.println(m1);
