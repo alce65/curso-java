@@ -2,7 +2,6 @@ package local.data;
 
 import java.util.Arrays;
 
-@SuppressWarnings("unused")
 public class Text {
 
     void useString() {
@@ -57,7 +56,6 @@ public class Text {
         System.out.println("Value of: " + String.valueOf(text));
     }
 
-   
     void useStringBuffer() {
         StringBuffer sb = new StringBuffer("Hello");
         String text = "Hello";
