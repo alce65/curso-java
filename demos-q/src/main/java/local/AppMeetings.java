@@ -1,13 +1,15 @@
 package local;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import local.entities.Meeting;
 import local.repositories.MeetingDAO;;
 
 public final class AppMeetings {
-    private static void checkMeeting() {
-         MeetingDAO meetingDAO = new MeetingDAO();
+    private static MeetingDAO meetingDAO = new MeetingDAO();
+
+    private static void checkMeetingInitial() {
 
         Meeting m1 = meetingDAO.save(new Meeting("Primera reunion", LocalDateTime.now().plusDays(2)));
         Meeting m2 = meetingDAO.save(new Meeting("Segunda reunion", LocalDateTime.now().plusDays(3)));
@@ -56,6 +58,15 @@ public final class AppMeetings {
 
     public static void main(String[] args) {
         System.out.println("Meetings application");
-        checkMeeting();
+        // checkMeetingInitial();
+        System.out.println("----------- Find All -----------");
+        System.out.println(meetingDAO.findAll());
+
+        // 2025-07-25T10:36:45.258813
+        System.out.println("----------- Find by date -----------");
+        List<Meeting> m = meetingDAO.findByDate(LocalDateTime.of(2025, 07, 25,10,36, 45));
+        System.out.println(m);
+        Meeting m1 = meetingDAO.nextMeetingBasic();
+        System.out.println(m1);
     }
 }
