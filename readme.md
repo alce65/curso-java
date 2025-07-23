@@ -551,3 +551,23 @@ Acción formativa: 25/1599 (23/1583)
 
 - META-INFO\persistence.xml
 - EntityManager
+
+## Día 36 (M 22/07)
+
+- Entities
+  - Meeting
+  - Room
+  - Record
+  - Person
+- Anotaciones Hibernate
+  - @Entity, @Table, @Column, @Id
+
+- DAO (Repository)
+  - Interface
+  - AbstractDao
+  - MeetingDao -> Pruebas
+- Propuesta: resto de los DAO
+
+## Día 37 (X 23/07)
+
+- Review todo DB
