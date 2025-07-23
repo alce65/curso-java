@@ -15,7 +15,7 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String surmame;
+    private String surname;
     private String email;
 
     public void setEmail(String email) {
@@ -26,15 +26,15 @@ public class Person {
         // JPA default constructor
     }
 
-    public Person(String name, String surmame, String email) {
+    public Person(String name, String surname, String email) {
         this.name = name;
-        this.surmame = surmame;
+        this.surname = surname;
         this.email = email;
     }
 
     @Override
     public String toString() {
-        return "Person [id=" + id + ", name=" + name + ", surmame=" + surmame + ", email=" + email + "]";
+        return "Person [id=" + id + ", name=" + name + ", surname=" + surname + ", email=" + email + "]";
     }
 
 }

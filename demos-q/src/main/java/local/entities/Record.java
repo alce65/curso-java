@@ -18,6 +18,7 @@ public class Record {
     UUID id;
     String content;
 
+
     public Record(String content) {
         this.content = content;
     }
@@ -25,6 +26,11 @@ public class Record {
     public Record() {
         // JPA default constructor
     }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
 
     @Override
     public String toString() {
