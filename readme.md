@@ -570,4 +570,18 @@ Acción formativa: 25/1599 (23/1583)
 
 ## Día 37 (X 23/07)
 
-- Review todo DB
+- Review previo DB
+- Añadir y probar DAOs
+  - Room
+  - Record
+  - Person
+- Métodos específicos en los DAO
+  - Queries tipadas
+  - Queries parametrizadas
+
+## Día 38 (J 23/07)
+
+- Queries parametrizadas (continuación)
+- Relaciones entre tablas
+
+
