@@ -64,10 +64,10 @@ public final class AppMeetings {
         System.out.println("----------- Find All -----------");
         System.out.println(meetingDAO.findAll());
 
-        // 2025-07-25T10:36:45.258813
         System.out.println("----------- Find by date -----------");
         List<Meeting> m = meetingDAO.findByDate(LocalDate.of(2025, 07, 25));
         System.out.println(m);
+        System.out.println("----------- Next meeting -----------");
         Meeting m1 = meetingDAO.nextMeetingBasic();
         System.out.println(m1);
     }

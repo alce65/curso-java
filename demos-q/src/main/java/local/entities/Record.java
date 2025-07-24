@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,8 +17,12 @@ public class Record {
     @Column(name = "record_id")
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    UUID id;
-    String content;
+    private UUID id;
+    private String content;
+
+    @OneToOne
+    @JoinColumn(name="meeting_id", unique = true)
+    private Meeting meeting;
 
 
     public Record(String content) {
@@ -31,11 +37,13 @@ public class Record {
         this.content = content;
     }
 
-
     @Override
     public String toString() {
-        return "Record [id=" + id + ", content=" + content + "]";
+        return "Record [id=" + id + ", content=" + content + ", meeting=" + meeting + "]";
     }
+
+
+
 
 
 }
