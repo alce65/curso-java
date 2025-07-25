@@ -2,13 +2,50 @@ package local;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import local.entities.Meeting;
 import local.repositories.MeetingDAO;;
 
 public final class AppMeetings {
     private static MeetingDAO meetingDAO = new MeetingDAO();
+
+    private static void showMeetings(Collection<Meeting> collection) {
+        if (collection == null || collection.isEmpty()) {
+            System.out.println("No items found.");
+            return;
+        }
+        System.out.println("Meetings: [");
+        collection.forEach(item -> System.out.println(item.toString(true)));
+        System.out.println("]");
+        System.out.println();
+    }
+
+    private static void showOptional(Optional<Meeting> optionalRoom) {
+        optionalRoom.ifPresentOrElse(
+                //
+                item -> System.out.println(item.toString(true)),
+                //
+                () -> System.out.println("Sala no encontrada"));
+
+    }
+
+    private static void showMeetings() {
+        System.out.println("----------- Find All -----------");
+        showMeetings(meetingDAO.findAll());
+        // meetingDAO.findAll().forEach(item -> {
+        // System.out.println(item.toString(true));
+        // });
+
+        System.out.println("----------- Find by date -----------");
+        List<Meeting> m = meetingDAO.findByDate(LocalDate.of(2025, 07, 25));
+        showMeetings(m);
+        System.out.println("----------- Next meeting -----------");
+        Meeting m1 = meetingDAO.nextMeetingBasic();
+        System.out.println(m1.toString(true));
+    }
 
     @SuppressWarnings("unused")
     private static void checkMeetingInitial() {
@@ -19,11 +56,11 @@ public final class AppMeetings {
         System.out.println(m2);
 
         System.out.println("----------- Find All -----------");
-        System.out.println(meetingDAO.findAll());
+        showMeetings(meetingDAO.findAll());
         System.out.println("----------- Find by ID valid -----------");
-        System.out.println(meetingDAO.findById(1));
+        showOptional(meetingDAO.findById(1));
         System.out.println("----------- Find by ID invalid -----------");
-        System.out.println(meetingDAO.findById(100));
+        showOptional(meetingDAO.findById(100));
 
         System.out.println("----------- Delete by ID 1 (si existe)-----------");
         // try {
@@ -55,17 +92,6 @@ public final class AppMeetings {
     public static void main(String[] args) {
         System.out.println("Meetings application");
         // checkMeetingInitial();
-        System.out.println("----------- Find All -----------");
-        meetingDAO.findAll().forEach(item -> {
-            System.out.println(item.toString(true));
-        });
-        System.out.println();
-
-        System.out.println("----------- Find by date -----------");
-        List<Meeting> m = meetingDAO.findByDate(LocalDate.of(2025, 07, 25));
-        System.out.println(m);
-        System.out.println("----------- Next meeting -----------");
-        Meeting m1 = meetingDAO.nextMeetingBasic();
-        System.out.println(m1);
+        showMeetings();
     }
 }

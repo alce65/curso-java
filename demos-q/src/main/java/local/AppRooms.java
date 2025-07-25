@@ -1,24 +1,42 @@
 package local;
 
+import java.util.Collection;
+import java.util.Optional;
+
 import local.entities.Room;
 import local.repositories.RoomDAO;
 
 public class AppRooms {
     static RoomDAO dao = new RoomDAO();
 
-    private static void showRooms() {
-        System.out.println("----------- Find All -----------");
-        dao.findAll().forEach(item -> {
-            System.out.println(item.toString(true));
-        });
+    private static void showRooms(Collection<Room> collection) {
+        if (collection == null || collection.isEmpty()) {
+            System.out.println("No items found.");
+            return;
+        }
+        System.out.println("Rooms: [");
+        collection.forEach(item -> System.out.println(item.toString(true)));
+        System.out.println("]");
         System.out.println();
-        System.out.println("----------- Find by ID valid -----------");
-        dao.findById("S0101").ifPresentOrElse(item -> System.out.println(item.toString(true)),
+    }
+
+    private static void showOptional(Optional<Room> optionalItem) {
+        optionalItem.ifPresentOrElse(
+                //
+                item -> System.out.println(item.toString(true)),
+                //
                 () -> System.out.println("Sala no encontrada"));
 
+    }
+
+    private static void showRooms() {
+        System.out.println("----------- Find All -----------");
+        showRooms(dao.findAll());
+        System.out.println("----------- Find by ID valid -----------");
+        showOptional(dao.findById("S0101"));
         System.out.println("----------- Find by ID invalid -----------");
-        dao.findById(100).ifPresentOrElse(item -> System.out.println(item.toString(true)),
-                () -> System.out.println("Sala no encontrada"));
+        showOptional(dao.findById(100));
+
     }
 
     @SuppressWarnings("unused")

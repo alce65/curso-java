@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -13,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,6 +31,9 @@ public class Meeting {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
     private Room room;
+
+    @OneToOne(mappedBy = "meeting", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Record record;
 
     @ManyToMany(mappedBy = "meetings", fetch = FetchType.LAZY)
     private Set<Person> persons;
@@ -55,7 +60,7 @@ public class Meeting {
         return toString(false);
     }
 
-    public String toString(boolean includeRoom) {
+    public String toString(boolean isFull) {
         StringBuilder sb = new StringBuilder();
         sb.append("Meeting {id:").append(id)
                 //
@@ -65,9 +70,14 @@ public class Meeting {
                 //
                 .append(", time:").append(date.format(DateTimeFormatter.ISO_LOCAL_TIME));
 
-        if (includeRoom && room != null) {
+        if (isFull && room != null) {
             sb.append(", room=:").append(room);
         }
+
+        if (isFull && record != null) {
+            sb.append(", record=:").append(record);
+        }
+
         sb.append("}");
         return sb.toString();
     }

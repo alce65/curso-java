@@ -19,11 +19,12 @@ LinkedIn Learning by Mariona Nadal
     - [Métodos específicos de un DAO concreto](#métodos-específicos-de-un-dao-concreto)
   - [Múltiple entidades](#múltiple-entidades)
     - [Entidad Room: Relaciones 1:N](#entidad-room-relaciones-1n)
-      - [Implementación de la relación 1:N](#implementación-de-la-relación-1n)
+      - [Implementación de la relación ManyToOne y OneToMany](#implementación-de-la-relación-manytoone-y-onetomany)
       - [Modificación de los métodos toString](#modificación-de-los-métodos-tostring)
       - [Implementación del DAO para Room](#implementación-del-dao-para-room)
       - [TODO: Modificación del DAO de Meeting](#todo-modificación-del-dao-de-meeting)
     - [Entidad MeetingRecord: Relaciones 1:1](#entidad-meetingrecord-relaciones-11)
+      - [Implementación de la relación OneToOne](#implementación-de-la-relación-onetoone)
       - [Implementación del DAO para MeetingRecord](#implementación-del-dao-para-meetingrecord)
     - [Entidad Person: Relaciones N:M](#entidad-person-relaciones-nm)
       - [Implementación del DAO para Person](#implementación-del-dao-para-person)
@@ -564,7 +565,7 @@ public class Room {
 }
 ```
 
-#### Implementación de la relación 1:N
+#### Implementación de la relación ManyToOne y OneToMany
 
 La relación en este caso es uno a muchos (1:N), ya que una sala puede tener múltiples reuniones, pero cada reunión solo puede estar en una sala.
 
@@ -751,6 +752,8 @@ public void save(Meeting meeting) {
 ```
 
 ### Entidad MeetingRecord: Relaciones 1:1
+
+#### Implementación de la relación OneToOne
 
 La entidad `MeetingRecord` podría representar un registro asociado a una reunión, como un acta o un informe. En este caso, la relación entre `Meeting` y `MeetingRecord` sería de uno a uno (1:1), ya que cada reunión puede tener un único registro asociado.
 
