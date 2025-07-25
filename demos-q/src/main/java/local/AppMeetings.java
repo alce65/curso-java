@@ -25,8 +25,6 @@ public final class AppMeetings {
         System.out.println("----------- Find by ID invalid -----------");
         System.out.println(meetingDAO.findById(100));
 
-
-
         System.out.println("----------- Delete by ID 1 (si existe)-----------");
         // try {
         // meetingDAO.delete(meetingDAO.findById(2).get());
@@ -34,13 +32,10 @@ public final class AppMeetings {
         // System.out.println("Meeting ya eliminado");
         // }
 
-        meetingDAO.findById(1).ifPresentOrElse(
-            entity -> meetingDAO.delete(entity),
-            () -> System.out.println("Reunión no encontrada: no se ha podido eliminar"));
+        meetingDAO.findById(1).ifPresentOrElse(entity -> meetingDAO.delete(entity),
+                () -> System.out.println("Reunión no encontrada: no se ha podido eliminar"));
         System.out.println("----------- Find All after delete -----------");
         System.out.println(meetingDAO.findAll());
-
-
 
         try {
             Meeting m3 = meetingDAO.findById(3).orElseThrow(() -> new RuntimeException("Meeting not found"));
@@ -57,12 +52,14 @@ public final class AppMeetings {
         }
     }
 
-
     public static void main(String[] args) {
         System.out.println("Meetings application");
         // checkMeetingInitial();
         System.out.println("----------- Find All -----------");
-        System.out.println(meetingDAO.findAll());
+        meetingDAO.findAll().forEach(item -> {
+            System.out.println(item.toString(true));
+        });
+        System.out.println();
 
         System.out.println("----------- Find by date -----------");
         List<Meeting> m = meetingDAO.findByDate(LocalDate.of(2025, 07, 25));

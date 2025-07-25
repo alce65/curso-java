@@ -1,4 +1,5 @@
 package local.entities;
+
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -10,7 +11,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="rooms")
+@Table(name = "rooms")
 public class Room {
     @Column(name = "room_id")
     @Id
@@ -19,13 +20,11 @@ public class Room {
     private String name;
     private int capacity;
 
-    @OneToMany(mappedBy = "room",
-        cascade = CascadeType.ALL,
-        fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Meeting> meetings;
 
     public Room() {
-       // JPA default constructor
+        // JPA default constructor
     }
 
     public Room(String id, String name, int capacity) {
@@ -36,8 +35,18 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room [id=" + id + ", name=" + name + ", capacity=" + capacity + ", meetings=" + meetings + "]";
+        return toString(false);
     }
 
+    public String toString(boolean includeRelations) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Room {id:").append(id).append(", name:").append(name).append(", capacity:").append(capacity);
+
+        if (includeRelations && meetings != null) {
+            sb.append(", meetings:").append(meetings);
+        }
+        sb.append("}");
+        return sb.toString();
+    }
 
 }

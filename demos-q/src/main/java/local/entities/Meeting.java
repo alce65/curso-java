@@ -1,6 +1,7 @@
 package local.entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -10,13 +11,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="meetings")
+@Table(name = "meetings")
 public class Meeting {
     @Column(name = "meeting_id")
     @Id
@@ -33,18 +33,14 @@ public class Meeting {
     @ManyToMany(mappedBy = "meetings", fetch = FetchType.LAZY)
     private Set<Person> persons;
 
-
-
     public Meeting() {
         // JPA default constructor
     }
 
-    public Meeting( String description, LocalDateTime date) {
+    public Meeting(String description, LocalDateTime date) {
         this.description = description;
         this.date = date;
     }
-
-
 
     public void setDescription(String description) {
         this.description = description;
@@ -56,7 +52,24 @@ public class Meeting {
 
     @Override
     public String toString() {
-        return "Meeting [id=" + id + ", description=" + description + ", date=" + date + ", room=" + room + "]";
+        return toString(false);
+    }
+
+    public String toString(boolean includeRoom) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Meeting {id:").append(id)
+                //
+                .append(", description:").append(description)
+                //
+                .append(", date:").append(date.format(DateTimeFormatter.ISO_LOCAL_DATE))
+                //
+                .append(", time:").append(date.format(DateTimeFormatter.ISO_LOCAL_TIME));
+
+        if (includeRoom && room != null) {
+            sb.append(", room=:").append(room);
+        }
+        sb.append("}");
+        return sb.toString();
     }
 
 }

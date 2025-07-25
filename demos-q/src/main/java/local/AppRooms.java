@@ -6,30 +6,33 @@ import local.repositories.RoomDAO;
 public class AppRooms {
     static RoomDAO dao = new RoomDAO();
 
-    private static void  showRooms() {
+    private static void showRooms() {
         System.out.println("----------- Find All -----------");
-        System.out.println(dao.findAll());
-        // System.out.println("----------- Find by ID valid -----------");
-        // System.out.println(dao.findById(1));
-        // System.out.println("----------- Find by ID invalid -----------");
-        // System.out.println(dao.findById(100));
-        }
+        dao.findAll().forEach(item -> {
+            System.out.println(item.toString(true));
+        });
+        System.out.println();
+        System.out.println("----------- Find by ID valid -----------");
+        dao.findById("S0101").ifPresentOrElse(item -> System.out.println(item.toString(true)),
+                () -> System.out.println("Sala no encontrada"));
+
+        System.out.println("----------- Find by ID invalid -----------");
+        dao.findById(100).ifPresentOrElse(item -> System.out.println(item.toString(true)),
+                () -> System.out.println("Sala no encontrada"));
+    }
 
     @SuppressWarnings("unused")
     private static void checkRooms() {
 
         System.out.println("----------- Delete by ID S0201 (si existe)-----------");
 
-        dao.findById("S0101").ifPresentOrElse(
-                dao::delete,
+        dao.findById("S0101").ifPresentOrElse(dao::delete,
                 () -> System.out.println("Sala no encontrada: no se ha podido eliminar"));
-        dao.findById("S0201").ifPresentOrElse(
-                dao::delete,
+        dao.findById("S0201").ifPresentOrElse(dao::delete,
                 () -> System.out.println("Sala no encontrada: no se ha podido eliminar"));
-
 
         try {
-            dao.save(new Room("S0101", "Sala principal",10));
+            dao.save(new Room("S0101", "Sala principal", 10));
         } catch (Exception e) {
             System.out.println("Salas ya creadas");
         }
@@ -42,13 +45,9 @@ public class AppRooms {
         System.out.println("----------- Find by ID invalid -----------");
         System.out.println(dao.findById(100));
 
-
-        System.exit(0);
-
         System.out.println("----------- Delete by ID S0201 (si existe)-----------");
 
-        dao.findById("S0201").ifPresentOrElse(
-                dao::delete,
+        dao.findById("S0201").ifPresentOrElse(dao::delete,
                 () -> System.out.println("Sala no encontrada: no se ha podido eliminar"));
         System.out.println("----------- Find All after delete -----------");
         System.out.println(dao.findAll());
