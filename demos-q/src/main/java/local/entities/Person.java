@@ -1,5 +1,6 @@
 package local.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -16,7 +17,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "persons")
-public class Person {
+public class Person implements IEntities {
     @Column(name = "person_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,15 +31,19 @@ public class Person {
     //
     @JoinTable(
             // name = "persons_meetings",
-            joinColumns = { @JoinColumn(name = "meeting_id") }, inverseJoinColumns = {
+            joinColumns = {
+                 @JoinColumn(name = "meeting_id") },
+            inverseJoinColumns = {
                     @JoinColumn(name = "person_id") })
     private Set<Meeting> meetings;
 
     public Person() {
         // JPA default constructor
+        meetings = new HashSet<>();
     }
 
     public Person(String name, String surname, String email) {
+        this();
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -50,11 +55,11 @@ public class Person {
         this.email = email;
     }
 
-    // Setters
-
     public Set<Meeting> getMeetings() {
         return meetings;
     }
+
+    // Setters
 
     public void addMeeting(Meeting meeting) {
         if (meeting == null) {

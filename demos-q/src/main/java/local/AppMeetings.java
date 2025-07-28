@@ -6,45 +6,47 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import local.entities.IEntities;
 import local.entities.Meeting;
 import local.repositories.MeetingDAO;;
 
 public final class AppMeetings {
     private static MeetingDAO meetingDAO = new MeetingDAO();
 
-    private static void showMeetings(Collection<Meeting> collection) {
+    public static <T extends IEntities> void showList(Collection<T> collection, String className) {
+
         if (collection == null || collection.isEmpty()) {
             System.out.println("No items found.");
             return;
         }
-        System.out.println("Meetings: [");
+        System.out.println(className + ": [");
         collection.forEach(item -> System.out.println(item.toString(true)));
         System.out.println("]");
         System.out.println();
     }
 
-    private static void showOptional(Optional<Meeting> optional) {
+    public static <T extends IEntities> void showOptional(Optional<T> optional, String entityName) {
         optional.ifPresentOrElse(
                 //
                 item -> System.out.println(item.toString(true)),
                 //
-                () -> System.out.println("Reunión no encontrada"));
+                () -> System.out.println(entityName + " no encontrada"));
 
     }
 
     private static void showMeetings() {
         System.out.println("----------- Find All -----------");
-        showMeetings(meetingDAO.findAll());
+        showList(meetingDAO.findAll(), "Meetings");
         // meetingDAO.findAll().forEach(item -> {
         // System.out.println(item.toString(true));
         // });
 
         System.out.println("----------- Find by date -----------");
         List<Meeting> m = meetingDAO.findByDate(LocalDate.of(2025, 07, 25));
-        showMeetings(m);
+        showList(m, "Meetings");
         System.out.println("----------- Next meeting -----------");
-        Meeting m1 = meetingDAO.nextMeetingBasic();
-        System.out.println(m1.toString(true));
+        Optional<Meeting> m1 = meetingDAO.nextMeetingBasic();
+        showOptional(m1, "Reunión");
     }
 
     @SuppressWarnings("unused")
@@ -56,11 +58,11 @@ public final class AppMeetings {
         System.out.println(m2);
 
         System.out.println("----------- Find All -----------");
-        showMeetings(meetingDAO.findAll());
+        showList(meetingDAO.findAll(), "Meetings");
         System.out.println("----------- Find by ID valid -----------");
-        showOptional(meetingDAO.findById(1));
+        showOptional(meetingDAO.findById(1), "Reunion");
         System.out.println("----------- Find by ID invalid -----------");
-        showOptional(meetingDAO.findById(100));
+        showOptional(meetingDAO.findById(100),"Reunion");
 
         System.out.println("----------- Delete by ID 1 (si existe)-----------");
         // try {

@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "records")
-public class Record {
+public class Record implements IEntities {
     @Column(name = "record_id")
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

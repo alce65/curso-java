@@ -12,7 +12,7 @@ import local.entities.Record;
 public class AppRecords {
     static RecordDAO dao = new RecordDAO();
 
-        private static void showRecords(Collection<Record> collection) {
+    private static void showList(Collection<Record> collection) {
         if (collection == null || collection.isEmpty()) {
             System.out.println("No items found.");
             return;
@@ -35,7 +35,7 @@ public class AppRecords {
     private static void showRecords() {
         System.out.println("----------- Find All -----------");
         List<Record> records = dao.findAll();
-        showRecords(records);
+        showList(records);
 
         System.out.println("----------- Find by ID valid -----------");
         showOptional(dao.findById(records.get(0).getId()));

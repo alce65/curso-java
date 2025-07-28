@@ -1,5 +1,6 @@
 package local.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -12,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "rooms")
-public class Room {
+public class Room implements IEntities {
     @Column(name = "room_id")
     @Id
     private String id;
@@ -25,13 +26,20 @@ public class Room {
 
     public Room() {
         // JPA default constructor
+        meetings = new HashSet<>();
     }
 
     public Room(String id, String name, int capacity) {
+        this();
         this.id = id;
         this.name = name;
         this.capacity = capacity;
     }
+
+    public void addMeeting(Meeting meeting) {
+        meetings.add(meeting);
+    }
+
 
     @Override
     public String toString() {

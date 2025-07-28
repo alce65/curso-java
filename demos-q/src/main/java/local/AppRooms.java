@@ -9,7 +9,7 @@ import local.repositories.RoomDAO;
 public class AppRooms {
     static RoomDAO dao = new RoomDAO();
 
-    private static void showRooms(Collection<Room> collection) {
+    private static void showList(Collection<Room> collection) {
         if (collection == null || collection.isEmpty()) {
             System.out.println("No items found.");
             return;
@@ -31,7 +31,7 @@ public class AppRooms {
 
     private static void showRooms() {
         System.out.println("----------- Find All -----------");
-        showRooms(dao.findAll());
+        showList(dao.findAll());
         System.out.println("----------- Find by ID valid -----------");
         showOptional(dao.findById("S0101"));
         System.out.println("----------- Find by ID invalid -----------");

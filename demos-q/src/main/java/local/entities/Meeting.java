@@ -2,6 +2,7 @@ package local.entities;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -19,7 +20,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "meetings")
-public class Meeting {
+public class Meeting implements IEntities {
     @Column(name = "meeting_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +29,7 @@ public class Meeting {
     private String description;
     private LocalDateTime date;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
     private Room room;
 
@@ -42,9 +43,11 @@ public class Meeting {
 
     public Meeting() {
         // JPA default constructor
+        persons = new HashSet<>();
     }
 
     public Meeting(String description, LocalDateTime date) {
+        this();
         this.description = description;
         this.date = date;
     }
@@ -52,6 +55,10 @@ public class Meeting {
     // Getters
     public Set<Person> getPersons() {
         return persons;
+    }
+
+    public int getId() {
+        return id;
     }
 
     // Setters
@@ -63,6 +70,15 @@ public class Meeting {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public void setRecord(Record record) {
+        this.record = record;
+    }
+
 
     public void addParticipant(Person person) {
         if (person == null) {

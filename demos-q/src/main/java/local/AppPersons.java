@@ -10,7 +10,7 @@ public class AppPersons {
 
     private static PersonDAO dao = new PersonDAO();
 
-    private static void showPersons(Collection<Person> collection) {
+    private static void showList(Collection<Person> collection) {
         if (collection == null || collection.isEmpty()) {
             System.out.println("No items found.");
             return;
@@ -31,7 +31,7 @@ public class AppPersons {
 
     private static void showPersons() {
         System.out.println("----------- Find All -----------");
-        showPersons(dao.findAll());
+        showList(dao.findAll());
 
         System.out.println("----------- Find by ID valid -----------");
         showOptional(dao.findById(2));
@@ -41,13 +41,14 @@ public class AppPersons {
 
     }
 
+    @SuppressWarnings("unused")
     private static void checkPersons() {
 
         dao.save(new Person("Pepe", "Perez", "pp@sample.com"));
         dao.save(new Person("Luisa", "Gomez", "lg@sample.com"));
 
         System.out.println("----------- Find All -----------");
-        showPersons(dao.findAll());
+        showList(dao.findAll());
         System.out.println("----------- Find by ID valid -----------");
         showOptional(dao.findById(1));
         System.out.println("----------- Find by ID invalid -----------");
@@ -58,7 +59,7 @@ public class AppPersons {
         dao.findById(1).ifPresentOrElse(dao::delete,
                 () -> System.out.println("Persona no encontrada: no se ha podido eliminar"));
         System.out.println("----------- Find All after delete -----------");
-        showPersons(dao.findAll());
+        showList(dao.findAll());
 
         try {
             Person p3 = dao.findById(4).orElseThrow(() -> new RuntimeException("Persona no encontrada"));
@@ -67,7 +68,7 @@ public class AppPersons {
             p3.setEmail("new@sample.com");
             dao.update(p3);
             System.out.println("----------- Find All after update -----------");
-            showPersons(dao.findAll());
+            showList(dao.findAll());
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
