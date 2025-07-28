@@ -35,6 +35,8 @@ public class Meeting {
     @OneToOne(mappedBy = "meeting", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Record record;
 
+    // Segunda tabla de la relación:
+    // mappedBy indica que esta es la parte inversa de la relación
     @ManyToMany(mappedBy = "meetings", fetch = FetchType.LAZY)
     private Set<Person> persons;
 
@@ -47,12 +49,33 @@ public class Meeting {
         this.date = date;
     }
 
+    // Getters
+    public Set<Person> getPersons() {
+        return persons;
+    }
+
+    // Setters
+
     public void setDescription(String description) {
         this.description = description;
     }
 
     public void setDate(LocalDateTime date) {
         this.date = date;
+    }
+
+    public void addParticipant(Person person) {
+        if (person == null) {
+            throw new IllegalArgumentException("Person cannot be null");
+        }
+        if (persons.contains(person)) {
+            return; // Person already added
+        }
+        persons.add(person);
+        // Ensure bidirectional relationship
+        if (!person.getMeetings().contains(this)) {
+            person.getMeetings().add(this);
+        }
     }
 
     @Override
@@ -76,6 +99,10 @@ public class Meeting {
 
         if (isFull && record != null) {
             sb.append(", record=:").append(record);
+        }
+
+        if (isFull && persons != null) {
+            sb.append(", persons:").append(persons);
         }
 
         sb.append("}");

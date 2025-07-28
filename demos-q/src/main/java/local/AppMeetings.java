@@ -23,12 +23,12 @@ public final class AppMeetings {
         System.out.println();
     }
 
-    private static void showOptional(Optional<Meeting> optionalRoom) {
-        optionalRoom.ifPresentOrElse(
+    private static void showOptional(Optional<Meeting> optional) {
+        optional.ifPresentOrElse(
                 //
                 item -> System.out.println(item.toString(true)),
                 //
-                () -> System.out.println("Sala no encontrada"));
+                () -> System.out.println("Reunión no encontrada"));
 
     }
 

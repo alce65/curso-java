@@ -27,7 +27,8 @@ LinkedIn Learning by Mariona Nadal
       - [Implementación de la relación OneToOne](#implementación-de-la-relación-onetoone)
       - [Implementación del DAO para MeetingRecord](#implementación-del-dao-para-meetingrecord)
     - [Entidad Person: Relaciones N:M](#entidad-person-relaciones-nm)
-      - [Implementación del DAO para Person](#implementación-del-dao-para-person)
+      - [Implementación de la relación ManyToMany](#implementación-de-la-relación-manytomany)
+      - [Incorporación de valores](#incorporación-de-valores)
 
 ## Introducción
 
@@ -894,19 +895,16 @@ public class Person {
     private String surname;
     private String email;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "meeting_id")
-    private Set<Meeting> meetings;
-
-
     public Person() {
         // Default constructor for JPA
     }
 
-    public Person(String name, String email, Meeting meeting) {
+    public Person(String name, String email,
+    // Meeting meeting
+    ) {
         this.name = name;
         this.email = email;
-        this.meeting = meeting;
+        // this.meeting = meeting;
     }
 
     // Getters and Setters
@@ -915,9 +913,9 @@ public class Person {
         StringBuilder sb = new StringBuilder();
         sb.append("Person{id=").append(id).append(", name='").append(name).append('\'')
           .append(", email='").append(email).append('\'');
-        if (meeting != null) {
-            sb.append(", meetingId=").append(meeting.getId());
-        }
+        // if (meeting != null) {
+        //     sb.append(", meetingId=").append(meeting.getId());
+        // }
         sb.append('}');
         return sb.toString();
     }
@@ -930,26 +928,100 @@ Registramos la entidad en el fichero `persistence.xml` para que JPA la reconozca
 <class>local.domain.Person</class>
 ```
 
+#### Implementación de la relación ManyToMany
+
 Para definir la relación N:M, necesitamos una tabla intermedia que almacene las asociaciones entre `Person` y `Meeting`. En JPA, esto se puede hacer utilizando la anotación `@ManyToMany` en ambas entidades.
 
 En la entidad `Person`, hemos añadido un campo `Set<Meeting> meetings` para representar las reuniones a las que asiste la persona:
 
-```java
+```java (Person.java)
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    // @JoinColumn(name = "meeting_id")
+   @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        joinColumns = {@JoinColumn(name = "meeting_id")},
+        inverseJoinColumns = { @JoinColumn(name = "person_id")}
+    )
     private Set<Meeting> meetings;
 ```
 
 En la entidad `Meeting`, añadimos un campo `Set<Person> attendees` para representar las personas que asisten a la reunión:
 
-```java
+```java (Meeting.java)
+ // Segunda tabla de la relación:
+    // mappedBy indica que esta es la parte inversa de la relación
     @ManyToMany(mappedBy = "meetings", fetch = FetchType.LAZY)
-    // @JoinColumn(name = "person_id")
-    private Set<Person> participants;
+    private Set<Person>participants;
 ```
 
-En uno de los casos, la anotación `@ManyToMany` se usa con `mappedBy` para indicar que la relación está mapeada por el campo `meetings` en la entidad `Person`. Esto significa que la tabla intermedia se gestionará desde la entidad `Person`, llamando a la tabla intermedia `persons_meetings` por defecto.
+En uno de los casos, la anotación `@ManyToMany` se usa con `mappedBy` para indicar que la relación está mapeada por el campo `meetings` en la entidad `Person`. Esto significa que la tabla intermedia se gestionará desde la entidad `Person`, llamando a la tabla intermedia `persons_meetings` por defecto, y con los nombres de los campos indicados en `@JoinColumn`.
+
+Para ambos campos añadiremos los métodos `getters` que permitiran acceder a los valores existentes en el momento de poder añadir otros nuevos:
+
+```java (Meeting.java)
+public Set<Meeting> getMeetings() {
+    return meetings;
+}
+```
+
+```java (Person.java)
+public Set<Person> getParticipants() {
+    return participants;
+}
+```
+
+#### Incorporación de valores
+
+En los constructores de las entidades, podemos inicializar los campos relacionados para facilitar la creación de objetos:
+
+```java
+public Person(String name, String email) {
+    this.name = name;
+    this.email = email;
+    this.meetings = new HashSet<>();
+}
+
+public Meeting(String title, LocalDateTime startTime, LocalDateTime endTime) {
+    this.title = title;
+    this.startTime = startTime;
+    this.endTime = endTime;
+    this.participants = new HashSet<>();
+}
+```
+
+En cada caso habrá un método que añada valores al set de reuniones o de participantes y que al mismo tiempo establezca la relación bidireccional:
+
+```java (Meeting.java)
+public void addMeeting(Meeting meeting) { 
+  if (meeting == null) {
+      throw new IllegalArgumentException("Meeting cannot be null");
+  }
+  if (meetings.contains(meeting)) {
+      return; // Meeting already added
+  }
+  this.meetings.add(meeting);
+  // Ensure bidirectional relationship
+  // Al ser un Set, no se añade si ya existe
+  // pero podría entrar en un bucle infinito si no se comprueba
+  if (!meeting.getPersons().contains(this)) {
+      meeting.getPersons().add(this);
+  }
+}
+```
+
+```java (Person.java)
+public void addParticipant(Person person) {
+    if (person == null) {
+        throw new IllegalArgumentException("Person cannot be null");
+    }
+    if (participants.contains(person)) {
+        return; // Person already added
+    }
+    participants.add(person);
+    // Ensure bidirectional relationship
+    if (!person.getMeetings().contains(this)) {
+        person.getMeetings().add(this);
+    }
+}
 
 #### Implementación del DAO para Person
 
