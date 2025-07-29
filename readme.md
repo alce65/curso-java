@@ -589,3 +589,11 @@ Acción formativa: 25/1599 (23/1583)
 
 
 ## Día 39 (L 28/07)
+
+- Review: Relaciones entre tablas
+  - Problemas de recursividad
+  - N:N -> meetings (@ManyToMany) - persons (@ManyToMany)
+
+- Review : Curso
+
+- Proyecto final. Presentación
