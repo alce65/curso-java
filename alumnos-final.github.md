@@ -51,3 +51,20 @@
 12. José Manuel [jmgl1984](https://github.com/jmgl1984)
 
 13. Cristian Jonathan [cj-mtz14](https://github.com/cj-mtz14)
+
+
+## Final proyecto (12)
+
+1. Stefanía: [stefaniaburi](https://github.com/stefaniaburi)
+2. Evelyn Maryel [aguilarevelyn](https://github.com/aguilarevelyn)
+3. Eugenio [elmsmoc](https://github.com/elmsmoc)
+4. Laura [laura888rg](https://github.com/laura888rg)
+5. Kyle [kylewenad](https://github.com/kylewenad)
+6. Claudia [claauugil](https://github.com/claauugil)
+7. Salvador [gorgola34](https://github.com/gorgola34)
+8. Guillermo [elsomg](https://github.com/elsomg)
+9. Cristian Jonathan [cj-mtz14](https://github.com/cj-mtz14)
+
+10. José Manuel [jmgl1984](https://github.com/jmgl1984)
+11. Fernando [fernando2108](https://github.com/fernando2108)
+12. Oswaldo [generacion2024](https://github.com/generacion2024)

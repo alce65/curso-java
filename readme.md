@@ -596,4 +596,16 @@ Acción formativa: 25/1599 (23/1583)
 
 - Review : Curso
 
-- Proyecto final. Presentación
+- Proyecto final. Presentación a los alumnos
+
+
+## Día 40 (M 29/07)
+
+- Proyecto final
+
+## Día 41 (X 30/07)
+
+- Examen teórico
+- Proyecto final
+
+## Día 42 (J 31/07)
